@@ -47,15 +47,37 @@
         
       </ul>
       <div class="d-flex">
-        <button class="btn btn-outline-success " type="submit">Search</button>
+        <!-- <button class="btn btn-outline-success " type="submit">Search</button> -->
+        <button type="button" class="btn btn-outline-dark shadow-none me-lg-2 me-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
       </div>
     </div>
   </div>
 </nav>
 
 
-
-
+<!-- Login Modal -->
+<div class="modal fade" id="loginMoadal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <form action="">
+            <div class="modal-header">
+                <h5 class="modal-title" >
+                    Login 
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </form>
+      
+    </div>
+  </div>
+</div>
 
 
 
