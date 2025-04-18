@@ -17,6 +17,7 @@
             font-family: 'Merienda', cursive;
         }
         <?php echo "Hello"; ?>
+        <?php echo "Hello"; ?>
     </style>
 </head>
 <body>
