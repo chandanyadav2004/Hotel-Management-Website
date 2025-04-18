@@ -84,10 +84,10 @@
                     <a href="javascript:void(0)" class="text-secondary text-decoration-none">Forgot Password</a>
                 </div>
               </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Understood</button>
-            </div>
+            </div> -->
         </form>
       </div>
     </div>
@@ -119,10 +119,10 @@
                     <a href="javascript:void(0)" class="text-secondary text-decoration-none">Forgot Password</a>
                 </div>
               </div>
-            <div class="modal-footer">
+            <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Understood</button>
-            </div>
+            </div> -->
         </form>
       </div>
     </div>
