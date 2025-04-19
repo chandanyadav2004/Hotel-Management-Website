@@ -203,14 +203,9 @@
       </div>
     </div>
   </div>
+<!-- End of Carousel Design -->
 
-
-
-
-
-
-
-  <!-- End of Carousel Design -->
+<!--  -->
 
 
 
