@@ -37,7 +37,7 @@
 </head>
 
 <body>
-
+<!-- Header Design -->
   <!-- Nav Bar  -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white ps-lg-3 py-lg-2 shadow-sm sticky-top">
     <div class="container-fluid">
@@ -77,8 +77,6 @@
       </div>
     </div>
   </nav>
-
-
   <!-- Login Modal -->
   <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -113,8 +111,6 @@
       </div>
     </div>
   </div>
-
-
   <!-- Register Modal -->
   <div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -180,9 +176,17 @@
       </div>
     </div>
   </div>
+<!-- End of Header Design -->
+<!-- Carousel Design -->
 
 
 
+
+
+
+
+
+<!-- End of Carousel Design -->
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
