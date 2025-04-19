@@ -9,10 +9,10 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700;&family=Poppins:wght@400;500;600&display=swap" >
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700;&family=Poppins:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
     * {
       font-family: 'Poppins', sans-serif;
@@ -23,21 +23,21 @@
     }
 
     /* Chrome, Safari, Edge, Opera */
-      input::-webkit-outer-spin-button,
-      input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
-      /* Firefox */
-      input[type=number] {
-        -moz-appearance: textfield;
-      }
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
   </style>
 </head>
 
-<body>
-<!-- Header Design -->
+<body class="bg-light">
+  <!-- Header Design -->
   <!-- Nav Bar  -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white ps-lg-3 py-lg-2 shadow-sm sticky-top">
     <div class="container-fluid">
@@ -130,54 +130,79 @@
             </span>
             <div class="container-fluid">
               <div class="row">
-                  <div class="col-md-6 ps-0 mb-3">
-                    <label class="form-label">Name </label>
-                    <input type="text" class="form-control shadow-none">
-                  </div>
-                  <div class="col-md-6 p-0 mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control shadow-none">
-                  </div>
-                  <div class="col-md-6 ps-0 mb-3">
-                    <label class="form-label">Phone Number </label>
-                    <input type="number" class="form-control shadow-none">
-                  </div>
-                  <div class="col-md-6 p-0 mb-3">
-                    <label class="form-label">Picture</label>
-                    <input type="file" class="form-control shadow-none">
-                  </div>
-                  <div class="col-md-12 p-0 mb-3">
-                    <label class="form-label">Address</label>
-                    <textarea class="form-control shadow-none"  rows="1"></textarea>
-                  </div>
-                  <div class="col-md-6 ps-0 mb-3">
-                    <label class="form-label">Pincode </label>
-                    <input type="number" class="form-control shadow-none">
-                  </div>
-                  <div class="col-md-6 p-0 mb-3">
-                    <label class="form-label">Date of birth</label>
-                    <input type="date" class="form-control shadow-none">
-                  </div>
-                  <div class="col-md-6 ps-0 mb-3">
-                    <label class="form-label">Password </label>
-                    <input type="password" class="form-control shadow-none">
-                  </div>
-                  <div class="col-md-6 p-0 mb-3">
-                    <label class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control shadow-none">
-                  </div>
+                <div class="col-md-6 ps-0 mb-3">
+                  <label class="form-label">Name </label>
+                  <input type="text" class="form-control shadow-none">
+                </div>
+                <div class="col-md-6 p-0 mb-3">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control shadow-none">
+                </div>
+                <div class="col-md-6 ps-0 mb-3">
+                  <label class="form-label">Phone Number </label>
+                  <input type="number" class="form-control shadow-none">
+                </div>
+                <div class="col-md-6 p-0 mb-3">
+                  <label class="form-label">Picture</label>
+                  <input type="file" class="form-control shadow-none">
+                </div>
+                <div class="col-md-12 p-0 mb-3">
+                  <label class="form-label">Address</label>
+                  <textarea class="form-control shadow-none" rows="1"></textarea>
+                </div>
+                <div class="col-md-6 ps-0 mb-3">
+                  <label class="form-label">Pincode </label>
+                  <input type="number" class="form-control shadow-none">
+                </div>
+                <div class="col-md-6 p-0 mb-3">
+                  <label class="form-label">Date of birth</label>
+                  <input type="date" class="form-control shadow-none">
+                </div>
+                <div class="col-md-6 ps-0 mb-3">
+                  <label class="form-label">Password </label>
+                  <input type="password" class="form-control shadow-none">
+                </div>
+                <div class="col-md-6 p-0 mb-3">
+                  <label class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control shadow-none">
                 </div>
               </div>
-              <div class="text-center my-1">
-                  <button type="submit" class="btn btn-dark shadow-none ">Register</button>
-              </div>
+            </div>
+            <div class="text-center my-1">
+              <button type="submit" class="btn btn-dark shadow-none ">Register</button>
+            </div>
           </div>
         </form>
       </div>
     </div>
   </div>
-<!-- End of Header Design -->
-<!-- Carousel Design -->
+  <!-- End of Header Design -->
+  <!-- Carousel Design -->
+  <div class="container-fluid px-lg-4 mt-4">
+    <!-- Swiper -->
+    <div class="swiper swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="images/carousel/1.png" class="w-100 d-block"/>
+        </div>
+        <div class="swiper-slide">
+          <img src="images/carousel/2.png" class="w-100 d-block" />
+        </div>
+        <div class="swiper-slide">
+          <img src="images/carousel/3.png" class="w-100 d-block" />
+        </div>
+        <div class="swiper-slide">
+          <img src="images/carousel/4.png" class="w-100 d-block" />
+        </div>
+        <div class="swiper-slide">
+          <img src="images/carousel/5.png" class="w-100 d-block" />
+        </div>
+        <div class="swiper-slide">
+          <img src="images/carousel/6.png" class="w-100 d-block" />
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -185,14 +210,27 @@
 
 
 
+  <!-- End of Carousel Design -->
 
-<!-- End of Carousel Design -->
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".swiper-container", {
+      spaceBetween: 30,
+      effect: "fade",
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
 </body>
 
 </html>
