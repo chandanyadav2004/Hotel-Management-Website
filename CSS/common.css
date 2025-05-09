@@ -14,9 +14,9 @@
   }
 
   /* Firefox */
-  input[type=number] {
+  /* input[type=number] {
     -moz-appearance: textfield;
-  }
+  } */
   .custom-bg {
     background-color: #2ec1ac !important;
     border: 1px solid #2ec1ac !important;
