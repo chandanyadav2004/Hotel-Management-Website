@@ -13,32 +13,10 @@
     href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700;&family=Poppins:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="CSS/common.css">
   <style>
-    * {
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .h-font {
-      font-family: 'Merienda', cursive;
-    }
-
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    /* Firefox */
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
-    .custom-bg {
-      background-color: #2ec1ac !important;
-    }
-    .custom-bg:hover {
-      background-color: #279e8c !important;
-    }
+    
     .availability-form{
       margin-top: -50px;
       z-index: 2;
@@ -392,7 +370,7 @@
         </div>
     </div>
 
-    
+
     <div class="col-lg-12 text-center mt-5">
       <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none" >More Rooms >>></a>
     </div>
