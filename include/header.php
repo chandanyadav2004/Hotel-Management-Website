@@ -10,13 +10,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active me-2" aria-current="page" href="#">Home</a>
+            <a class="nav-link active me-2" aria-current="page" href="index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link me-2" href="#">Rooms</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link me-2" href="#">Facilities</a>
+            <a class="nav-link me-2" href="facilities.php">Facilities</a>
           </li>
           <li class="nav-item">
             <a class="nav-link me-2" href="#">Contact Us</a>
