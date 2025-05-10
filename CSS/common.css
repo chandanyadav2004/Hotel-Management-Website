@@ -1,3 +1,8 @@
+:root{
+  --teal: #2ec1ac;
+  --teal_hover: #279e8c;
+}
+
 * {
     font-family: 'Poppins', sans-serif;
   }
@@ -18,10 +23,10 @@
     -moz-appearance: textfield;
   } */
   .custom-bg {
-    background-color: #2ec1ac !important;
-    border: 1px solid #2ec1ac !important;
+    background-color: var(--teal) !important;
+    border: 1px solid var(--teal) !important;
   }
   .custom-bg:hover {
-    background-color: #279e8c !important;
-    border:1px solid #279e8c !important;
+    background-color: var(--teal_hover) !important;
+    border:1px solid var(--teal_hover) !important;
   }
