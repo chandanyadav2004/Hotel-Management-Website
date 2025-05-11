@@ -31,8 +31,4 @@ input::-webkit-inner-spin-button {
   border: 1px solid var(--teal_hover) !important;
 }
 
-.h-line {
-  width: 150px;
-  margin: 0 auto;
-  height: 2px;
-}
+

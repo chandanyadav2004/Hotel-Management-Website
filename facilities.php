@@ -12,6 +12,11 @@
 
   
   <style>
+    .h-line {
+      width: 150px;
+      margin: 0 auto;
+      height: 1.7px;
+    }
     .availability-form {
       margin-top: -50px;
       z-index: 2;
