@@ -33,6 +33,10 @@
 <?php require('include/header.php'); ?>
 <!-- End of Header Design -->
 
+<div class="my-5 px-4">
+  <h2 class="fw-bold h-font text-center">OUR FACILITIES</h2>
+  <div class="h-line bg-dark"></div>
+</div>
 
 <!-- Footer Section -->
 <?php require('include/footer.php'); ?>

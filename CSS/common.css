@@ -1,32 +1,38 @@
-:root{
+:root {
   --teal: #2ec1ac;
   --teal_hover: #279e8c;
 }
 
 * {
-    font-family: 'Poppins', sans-serif;
-  }
+  font-family: "Poppins", sans-serif;
+}
 
-  .h-font {
-    font-family: 'Merienda', cursive;
-  }
+.h-font {
+  font-family: "Merienda", cursive;
+}
 
-  /* Chrome, Safari, Edge, Opera */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-  /* Firefox */
-  /* input[type=number] {
+/* Firefox */
+/* input[type=number] {
     -moz-appearance: textfield;
   } */
-  .custom-bg {
-    background-color: var(--teal) !important;
-    border: 1px solid var(--teal) !important;
-  }
-  .custom-bg:hover {
-    background-color: var(--teal_hover) !important;
-    border:1px solid var(--teal_hover) !important;
-  }
+.custom-bg {
+  background-color: var(--teal) !important;
+  border: 1px solid var(--teal) !important;
+}
+.custom-bg:hover {
+  background-color: var(--teal_hover) !important;
+  border: 1px solid var(--teal_hover) !important;
+}
+
+.h-line {
+  width: 150px;
+  margin: 0 auto;
+  height: 2px;
+}
