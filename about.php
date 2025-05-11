@@ -28,7 +28,22 @@
   </p>
 </div>
 
-
+<div class="container">
+  <div class="row justify-content-between align-items-center">
+    <div class="col-lg-6 col-md-5 mb-4 order-lg-1 order-md-1 order-2 ">
+      <h3 class="mb-3">Lorem ipsum dolor sit</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Excepturi est natus, facere earum voluptates enim consequatur.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Excepturi est natus, facere earum voluptates enim consequatur.
+      </p>
+    </div>
+    <div class="col-lg-5 col-md-4 mb-4 order-lg-2 order-md-2 order-1">
+      <img src="images/about/about.jpg" class="w-100" >
+    </div>
+  </div>
+</div>
 
 
 
