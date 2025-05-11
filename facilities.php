@@ -29,18 +29,18 @@
 </head>
 
 <body class="bg-light">
-  <!-- Header Design -->
-  <?php require('include/header.php'); ?>
-  <!-- End of Header Design -->
+<!-- Header Design -->
+<?php require('include/header.php'); ?>
+<!-- End of Header Design -->
 
 
-    <!-- Footer Section -->
-    <?php require('include/footer.php'); ?>
-    <!-- End Footer Section -->
+<!-- Footer Section -->
+<?php require('include/footer.php'); ?>
+<!-- End Footer Section -->
 
     
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
 </body>
 
