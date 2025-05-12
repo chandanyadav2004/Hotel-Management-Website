@@ -53,7 +53,25 @@
             </a>   
         <h5 class="mt-4">Email us</h5>
         <a href="mailto: xyz@gmail.com" class="d-inline-block  text-decoration-none text-dark ">
-          <i class="bi bi-envelope-fill"></i>xyz@gmail.com</a>     
+          <i class="bi bi-envelope-fill"></i>xyz@gmail.com</a>   
+        <h5 class="mt-4">Follow us</h5>
+            <a href="#" class="d-inline-block mb-3 ">
+              <span class="badge fs-6 p-2 bg-light text-dark">
+                <i class="bi bi-twitter me-1"></i>Twitter
+              </span>
+            </a>
+            <br>
+            <a href="#" class="d-inline-block mb-3 ">
+              <span class="badge fs-6 p-2 bg-light text-dark">
+                <i class="bi bi-facebook me-1"></i>Facebook
+              </span>
+            </a>
+            <br>
+            <a href="#" class="d-inline-block  ">
+              <span class="badge fs-6 p-2 bg-light text-dark">
+                <i class="bi bi-instagram me-1"></i>Instagram
+              </span>
+            </a>  
       </div>
     </div>
     <div class="col-lg-6 col-md-6 mb-5 px-4">
