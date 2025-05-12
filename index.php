@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  
+
   <style>
     .availability-form {
       margin-top: -50px;
@@ -416,7 +416,7 @@
     <?php require('include/footer.php'); ?>
     <!-- End Footer Section -->
 
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->
