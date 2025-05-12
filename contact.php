@@ -38,12 +38,12 @@
   <div class="row">
     <div class="col-lg-6 col-md-6 mb-5 px-4">
       <div class="bg-white rounded shadow p-4 ">
-        <iframe class="w-100 rounded MB-4" height="320px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124040.30875721737!2d81.71918332323344!3d25.402240789395414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398534c9b20bd49f%3A0xa2237856ad4041a!2sPrayagraj%2C%20Uttar%20Pradesh!5e1!3m2!1sen!2sin!4v1746774919219!5m2!1sen!2sin" loading="lazy"></iframe>
+        <iframe class="w-100 rounded MB-4" height="220px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124040.30875721737!2d81.71918332323344!3d25.402240789395414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398534c9b20bd49f%3A0xa2237856ad4041a!2sPrayagraj%2C%20Uttar%20Pradesh!5e1!3m2!1sen!2sin!4v1746774919219!5m2!1sen!2sin" loading="lazy"></iframe>
         <H5>Address</H5>
         <a href="https://maps.app.goo.gl/Gu4rcJxJX6RtGhbv6" target="_blank" class="d-inline-block text-decoration-none text-dark mb-2">
           <i class="bi bi-geo-alt-fill"></i>XYZ Road, Near XYZ Hotel, Prayagraj, Uttar Pradesh 211001
         </a>
-       <h5 class="mt-4">Call us</h5>
+       <h5 class="mt-3">Call us</h5>
         <a href="tel: +917778889991" class="d-inline-block mb-2 text-decoration-none text-dark ">
               <i class="bi bi-telephone-fill"></i>+917778889991
         </a>
@@ -51,34 +51,46 @@
         <a href="tel: +917778889991" class="d-inline-block  text-decoration-none text-dark ">
               <i class="bi bi-telephone-fill"></i>+917778889991
             </a>   
-        <h5 class="mt-4">Email us</h5>
+        <h5 class="mt-3">Email us</h5>
         <a href="mailto: xyz@gmail.com" class="d-inline-block  text-decoration-none text-dark ">
           <i class="bi bi-envelope-fill"></i>xyz@gmail.com</a>   
 
 
-        <h5 class="mt-4">Follow us</h5>
-          <a href="#" class="d-inline-block mb-3 text-dark fs-5 me-2">
+        <h5 class="mt-3">Follow us</h5>
+          <a href="#" class="d-inline-block  text-dark fs-5 me-2">
             <i class="bi bi-twitter me-1"></i>
           </a>
-          <a href="#" class="d-inline-block mb-3 text-dark fs-5 me-2 ">
+          <a href="#" class="d-inline-block  text-dark fs-5 me-2 ">
             <i class="bi bi-facebook me-1"></i>
           </a>
-          <a href="#" class="d-inline-block mb-3  text-dark fs-5 me-2 ">
+          <a href="#" class="d-inline-block   text-dark fs-5 me-2 ">
             <i class="bi bi-instagram me-1"></i>
           </a>      
       </div>
     </div>
     <div class="col-lg-6 col-md-6 mb-5 px-4">
-      <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-        <div class="d-flex align-items-center mb-2">
-          <img src="images/facilities/ac.svg" width="40px">
-          <h5 class="m-0 ms-3">AC</h5>
-        </div>
-        
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Voluptate officia, dolor ad praesentium alias nostrum hic!
-        </p>
+      <div class="bg-white rounded shadow p-4 ">
+        <form action="">
+          <h5>Send a message</h5>
+          <div class="mt-3">
+            <label class="form-label" style="font-weight:500;">Name</label>
+            <input type="text" class="form-control shadow-none">
+          </div>
+          <div class="mt-3">
+            <label class="form-label" style="font-weight:500;">Email</label>
+            <input type="email" class="form-control shadow-none">
+          </div>
+          <div class="mt-3">
+            <label class="form-label" style="font-weight:500;">Subject</label>
+            <input type="text" class="form-control shadow-none">
+          </div>
+          <div class="mt-3">
+            <label class="form-label" style="font-weight:500;">Message</label>
+            <textarea rows="6" class="form-control shadow-none" style="resize:none;"></textarea>
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn text-white custom-bg shadow-none">Send Message</button>
+        </form>
       </div>
     </div>
 
