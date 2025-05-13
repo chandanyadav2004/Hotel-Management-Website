@@ -104,6 +104,13 @@
                 <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">1 Balcony</span>
                 <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">3 Sofa</span>
               </div>
+              <div class="facilities mb-3">
+                <h6 class="mb-1">Facilities</h6>
+                <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">AC</span>
+                <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">TV</span>
+                <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Free Wi-Fi</span>
+                <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Free Parking</span>
+              </div>
             </div>
             <div class="col-md-2">
               <div class="card-body">
