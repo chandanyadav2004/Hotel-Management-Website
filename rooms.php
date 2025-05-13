@@ -111,6 +111,11 @@
                 <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Free Wi-Fi</span>
                 <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">Free Parking</span>
               </div>
+              <div class="guests mb-3">
+              <h6 class="mb-1">Guest</h6>
+              <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">5 Adult</span>
+              <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">4 Children</span>
+            </div>
             </div>
             <div class="col-md-2">
               <div class="card-body">
