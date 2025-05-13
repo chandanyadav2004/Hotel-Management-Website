@@ -30,11 +30,11 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
         <nav class="navbar navbar-expand-lg navbar-light bg-white rounded shadow">
           <div class="container-fluid flex-lg-column align-items-stretch">
             <h4 class="mt-2">FILITERS</h4>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filterDropdown"
+            <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#filterDropdown"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -87,6 +87,7 @@
           </div>
         </nav>
       </div>
+
 
 
 
