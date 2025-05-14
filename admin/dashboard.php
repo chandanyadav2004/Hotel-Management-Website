@@ -2,6 +2,9 @@
 
 require('inc/essentials.php'); 
 adminLogin();
+// session_start()
+
+
 
 ?>
 
