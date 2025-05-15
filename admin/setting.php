@@ -28,7 +28,57 @@ adminLogin();
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
                 <h3 class="mb-4">SETTING</h3>
 
-                <!--  -->
+                <!-- General Setting section -->
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">General Setting</h5>
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#general-s">
+                                <i class="bi bi-pencil-square me-1"></i>Edit
+                            </button>
+                        </div>
+                        <h6 class="card-subtitle mb-1 fw-bold ">Side Title</h6>
+                        <p class="card-text" id="siteTitle"></p>
+                        <h6 class="card-subtitle mb-1 fw-bold ">About Us</h6>
+                        <p class="card-text" id="siteAbout"></p>
+                    </div>
+                </div>
+
+                <!-- General Setting section Modal -->
+                <div class="modal fade" id="general-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form action="">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">General Setting</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Site Title</label>
+                                        <input type="text" id="siteTitleInp" name="site_title"
+                                            class="form-control shadow-none">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Site About Us </label>
+                                        <textarea rows="6" id="siteAboutInp" name="site_about"
+                                            class="form-control shadow-none"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button"
+                                        onclick="site_title.value=general_data.site_title , site_about.value=general_data.site_about"
+                                        class="btn shadow-none text-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" onclick="upd_general(site_title.value,site_about.value)"
+                                        class="btn custom-bg text-white shadow-none">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -36,6 +86,60 @@ adminLogin();
 
 
     <?php require('inc/scripts.php') ?>
+    <script>
+        let general_data;
+
+        function get_general() {
+            let site_title = document.getElementById('siteTitle');
+            let site_about = document.getElementById('siteAbout');
+            let site_title_inp = document.getElementById('siteTitleInp');
+            let site_about_inp = document.getElementById('siteAboutInp');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'ajax/settings_crud.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                general_data = JSON.parse(this.response);
+
+                site_title.innerHTML = general_data.site_title;
+                site_about.innerHTML = general_data.site_about;
+                site_title_inp.value = general_data.site_title;
+                site_about_inp.value = general_data.site_about;
+
+                // console.log(general_data);
+            }
+
+            xhr.send('get_general');
+        }
+
+
+        function upd_general(site_title, site_about) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'ajax/settings_crud.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                var myModal = document.getElementById('general-s')
+                var modal = bootstrap.Modal.getInstance(myModal) // Returns a Bootstrap modal instance
+                modal.hide() // Hide the modal
+                if (this.response == 1) {
+                    get_general();
+                    alert('success', 'Updated successfully');
+                } else {
+                    alert('error', 'Not Updated successfully');
+                }
+            }
+
+            xhr.send('upd_general&site_title=' + site_title + '&site_about=' + site_about);
+        }
+
+        window.onload = function () {
+            get_general();
+        }
+
+    </script>
+
 </body>
 
 </html>
