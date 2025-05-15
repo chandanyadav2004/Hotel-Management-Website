@@ -2,7 +2,7 @@
 require('inc/essentials.php');
 require('inc/db_config.php');
 session_start();
-        if(!(isset($_SESSION['admin_login']) && $_SESSION['admin_login']==true)){
+        if((isset($_SESSION['admin_login']) && $_SESSION['admin_login']==true)){
             redirect('dashboard.php');
             
         }
@@ -64,6 +64,7 @@ session_start();
             $row = mysqli_fetch_assoc($res);
             $_SESSION["admin_id"] = $row["sr_no"];
             $_SESSION['admin_login'] = true;
+            
             redirect('dashboard.php');
 
         } else {
