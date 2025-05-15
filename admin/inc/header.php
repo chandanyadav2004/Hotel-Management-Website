@@ -24,7 +24,7 @@
                             <a class="nav-link text-white " href="#">Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white " href="#">Setting</a>
+                            <a class="nav-link text-white " href="setting.php">Setting</a>
                         </li>
                     </ul>
 
