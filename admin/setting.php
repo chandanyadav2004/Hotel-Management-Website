@@ -50,7 +50,7 @@ adminLogin();
                 <div class="modal fade" id="general-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form action="">
+                        <form >
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">General Setting</h5>
@@ -71,7 +71,7 @@ adminLogin();
                                     <button type="button"
                                         onclick="site_title.value=general_data.site_title , site_about.value=general_data.site_about"
                                         class="btn shadow-none text-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" onclick="upd_general(site_title.value,site_about.value)"
+                                    <button type="submit" onclick="upd_general(site_title.value,site_about.value)"
                                         class="btn custom-bg text-white shadow-none">Submit</button>
                                 </div>
                             </div>
