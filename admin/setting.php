@@ -57,12 +57,12 @@ adminLogin();
                                 </div>
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label class="form-label">Site Title</label>
+                                        <label class="form-label fw-bold">Site Title</label>
                                         <input type="text" id="siteTitleInp" name="site_title"
                                             class="form-control shadow-none" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Site About Us </label>
+                                        <label class="form-label fw-bold">Site About Us </label>
                                         <textarea rows="6" id="siteAboutInp" name="site_about"
                                             class="form-control shadow-none" required ></textarea>
                                     </div>
