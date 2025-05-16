@@ -166,7 +166,7 @@ adminLogin();
 
     <?php require('inc/scripts.php') ?>
     <script>
-        let general_data;
+        let general_data, contacts_data;
         let site_title_inp = document.getElementById('siteTitleInp');
         let site_about_inp = document.getElementById('siteAboutInp');
 
@@ -176,7 +176,7 @@ adminLogin();
             upd_general(site_title_inp.value, site_about_inp.value)
 
         });
-
+        
         function get_general() {
             let site_title = document.getElementById('siteTitle');
             let site_about = document.getElementById('siteAbout');
@@ -208,6 +208,31 @@ adminLogin();
 
             xhr.send('get_general');
         }
+
+
+        function get_contacts() {
+            let contacts_p_id = ['address', 'gmap', 'pn1', 'pn2', 'email', 'fb', 'insta', 'tw'];
+            let iframe = document.getElementById('iframe');
+
+
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'ajax/settings_crud.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                // general_data = JSON.parse(this.response);
+                contacts_data = JSON.parse(this.response);
+                console.log(contacts_data);
+
+
+                
+            }
+
+            xhr.send('get_contacts');
+        }
+
+
 
 
         function upd_general(site_title, site_about) {
