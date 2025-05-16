@@ -59,12 +59,12 @@ adminLogin();
                                     <div class="mb-3">
                                         <label class="form-label">Site Title</label>
                                         <input type="text" id="siteTitleInp" name="site_title"
-                                            class="form-control shadow-none">
+                                            class="form-control shadow-none" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Site About Us </label>
                                         <textarea rows="6" id="siteAboutInp" name="site_about"
-                                            class="form-control shadow-none"></textarea>
+                                            class="form-control shadow-none" required ></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -86,7 +86,8 @@ adminLogin();
                             <h5 class="card-title m-0">ShutDown Website</h5>
                             <div class="form-check form-switch">
                                 <form action="">
-                                    <input onclick="upd_shutdown(this.value)" class="form-check-input" type="checkbox" id="shutdown-toggle">
+                                    <input onclick="upd_shutdown(this.value)" class="form-check-input" type="checkbox"
+                                        id="shutdown-toggle">
 
                                 </form>
                             </div>
@@ -129,7 +130,7 @@ adminLogin();
                 site_title_inp.value = general_data.site_title;
                 site_about_inp.value = general_data.site_about;
 
-                if(general_data.shutdown == 0) {
+                if (general_data.shutdown == 0) {
                     shutdown_toggle.checked = false;
                     shutdown_toggle.value = 0;
                 } else {
