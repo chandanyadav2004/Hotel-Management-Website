@@ -133,6 +133,24 @@ adminLogin();
                                 </div>
 
                             </div>
+                            <div class="col-lg-6">
+                                 <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold"> Social links</h6>
+                                    <p class="card-text  mb-1"><i class="bi bi-facebook me-1"></i>
+                                        <span id="fb"></span>
+                                    </p>
+                                    <p class="card-text"><i class="bi bi-instagram me-1"></i>
+                                        <span id="insta"></span>
+                                    </p>
+                                    <p class="card-text"><i class="bi bi-twitter me-1"></i>
+                                        <span id="tw"></span>
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold "> Iframe</h6>
+                                    <iframe id="iframe" class="border p-2 w-100" loading="lazy"></iframe>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
