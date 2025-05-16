@@ -119,8 +119,17 @@ adminLogin();
                                     <p class="card-text" id="gmap"></p>
                                 </div>
                                 <div class="mb-4">
-                                    <h6 class="card-subtitle mb-1 fw-bold ">Phone Numbers/div></h6>
-                                    <p class="card-text"><i class="bi bi-telephone-fill"></i></p>
+                                    <h6 class="card-subtitle mb-1 fw-bold">Phone Numbers</h6>
+                                    <p class="card-text  mb-1"><i class="bi bi-telephone-fill"></i>
+                                        <span id="pn1"></span>
+                                    </p>
+                                    <p class="card-text"><i class="bi bi-telephone-fill"></i>
+                                        <span id="pn1"></span>
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold ">E-mail</h6>
+                                    <p class="card-text" id="email"></p>
                                 </div>
 
                             </div>
