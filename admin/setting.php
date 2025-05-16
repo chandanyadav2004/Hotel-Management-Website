@@ -71,8 +71,7 @@ adminLogin();
                                     <button type="button"
                                         onclick="site_title.value=general_data.site_title , site_about.value=general_data.site_about"
                                         class="btn shadow-none text-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" onclick="upd_general(site_title.value,site_about.value)"
-                                        class="btn custom-bg text-white shadow-none">Submit</button>
+                                    <button type="submit" class="btn custom-bg text-white shadow-none">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -110,16 +109,20 @@ adminLogin();
     <?php require('inc/scripts.php') ?>
     <script>
         let general_data;
+        let site_title_inp = document.getElementById('siteTitleInp');
+        let site_about_inp = document.getElementById('siteAboutInp');
+
         let general_s_form = document.getElementById('general_s_form');
         general_s_form.addEventListener('submit', function (e) {
             e.preventDefault();
+            upd_general(site_title_inp.value,site_about_inp.value)
+
         });
 
         function get_general() {
             let site_title = document.getElementById('siteTitle');
             let site_about = document.getElementById('siteAbout');
-            let site_title_inp = document.getElementById('siteTitleInp');
-            let site_about_inp = document.getElementById('siteAboutInp');
+            
             let shutdown_toggle = document.getElementById('shutdown-toggle');
 
             let xhr = new XMLHttpRequest();
