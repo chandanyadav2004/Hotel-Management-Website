@@ -79,7 +79,7 @@ adminLogin();
                 </div>
 
                 <!-- ShutDown section -->
-                <div class="card border-0 shadow-sm ">
+                <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <h5 class="card-title m-0">ShutDown Website</h5>
@@ -124,7 +124,7 @@ adminLogin();
                                         <span id="pn1"></span>
                                     </p>
                                     <p class="card-text"><i class="bi bi-telephone-fill"></i>
-                                        <span id="pn1"></span>
+                                        <span id="pn2"></span>
                                     </p>
                                 </div>
                                 <div class="mb-4">
@@ -134,12 +134,12 @@ adminLogin();
 
                             </div>
                             <div class="col-lg-6">
-                                 <div class="mb-4">
+                                <div class="mb-4">
                                     <h6 class="card-subtitle mb-1 fw-bold"> Social links</h6>
                                     <p class="card-text  mb-1"><i class="bi bi-facebook me-1"></i>
                                         <span id="fb"></span>
                                     </p>
-                                    <p class="card-text"><i class="bi bi-instagram me-1"></i>
+                                    <p class="card-text mb-1"><i class="bi bi-instagram me-1"></i>
                                         <span id="insta"></span>
                                     </p>
                                     <p class="card-text"><i class="bi bi-twitter me-1"></i>
@@ -153,6 +153,50 @@ adminLogin();
                             </div>
                         </div>
 
+                    </div>
+                </div>
+
+                <!-- Contact us details  section Modal -->
+                <div class="modal fade" id="contact-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form id="general_s_form">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Contact Setting</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Address</label>
+                                                    <input type="text" id="address_inp" name="address"
+                                                        class="form-control shadow-none" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Address</label>
+                                                    <input type="text" id="address_inp" name="address"
+                                                        class="form-control shadow-none" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Address</label>
+                                                    <input type="text" id="address_inp" name="address"
+                                                        class="form-control shadow-none" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button"
+                                        onclick="site_title.value=general_data.site_title , site_about.value=general_data.site_about"
+                                        class="btn shadow-none text-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn custom-bg text-white shadow-none">Submit</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -176,7 +220,7 @@ adminLogin();
             upd_general(site_title_inp.value, site_about_inp.value)
 
         });
-        
+
         function get_general() {
             let site_title = document.getElementById('siteTitle');
             let site_about = document.getElementById('siteAbout');
@@ -224,9 +268,16 @@ adminLogin();
                 // general_data = JSON.parse(this.response);
                 contacts_data = JSON.parse(this.response);
                 console.log(contacts_data);
+                contacts_data = Object.values(contacts_data);
+                console.log(contacts_data);
+                for (let i = 0; i < contacts_p_id.length; i++) {
+                    document.getElementById(contacts_p_id[i]).innerText = contacts_data[i + 1];
+
+                }
+                iframe.src = contacts_data[9];
 
 
-                
+
             }
 
             xhr.send('get_contacts');
@@ -275,6 +326,7 @@ adminLogin();
 
         window.onload = function () {
             get_general();
+            get_contacts();
         }
 
     </script>
