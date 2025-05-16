@@ -6,7 +6,7 @@
             redirect('index.php');
             
         }
-        session_regenerate_id(true);
+        // session_regenerate_id(true);
     }
 
 
