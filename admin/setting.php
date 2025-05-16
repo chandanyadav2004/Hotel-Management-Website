@@ -64,7 +64,7 @@ adminLogin();
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">Site About Us </label>
                                         <textarea rows="6" id="siteAboutInp" name="site_about"
-                                            class="form-control shadow-none" required ></textarea>
+                                            class="form-control shadow-none" required></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -98,6 +98,37 @@ adminLogin();
                     </div>
                 </div>
 
+                <!-- Contact us details  section -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">Contact Setting</h5>
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#contact-s">
+                                <i class="bi bi-pencil-square me-1"></i>Edit
+                            </button>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold ">Address</h6>
+                                    <p class="card-text" id="address"></p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold ">Google map</h6>
+                                    <p class="card-text" id="gmap"></p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold ">Phone Numbers/div></h6>
+                                    <p class="card-text"><i class="bi bi-telephone-fill"></i></p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
 
 
             </div>
@@ -115,14 +146,14 @@ adminLogin();
         let general_s_form = document.getElementById('general_s_form');
         general_s_form.addEventListener('submit', function (e) {
             e.preventDefault();
-            upd_general(site_title_inp.value,site_about_inp.value)
+            upd_general(site_title_inp.value, site_about_inp.value)
 
         });
 
         function get_general() {
             let site_title = document.getElementById('siteTitle');
             let site_about = document.getElementById('siteAbout');
-            
+
             let shutdown_toggle = document.getElementById('shutdown-toggle');
 
             let xhr = new XMLHttpRequest();
