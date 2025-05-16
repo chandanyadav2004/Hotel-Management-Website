@@ -4,7 +4,7 @@
         session_start();
         if(!(isset($_SESSION['admin_login']) && $_SESSION['admin_login']==true)){
             redirect('index.php');
-            
+            exit;
         }
         // session_regenerate_id(true);
     }
