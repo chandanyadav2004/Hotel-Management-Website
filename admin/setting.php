@@ -159,8 +159,8 @@ adminLogin();
                 <!-- Contact us details  section Modal -->
                 <div class="modal fade" id="contact-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <form id="general_s_form">
+                    <div class="modal-dialog modal-lg">
+                        <form id="contact_s_form">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Contact Setting</h5>
@@ -175,27 +175,71 @@ adminLogin();
                                                         class="form-control shadow-none" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label fw-bold">Address</label>
-                                                    <input type="text" id="address_inp" name="address"
+                                                    <label class="form-label fw-bold">Google Maps</label>
+                                                    <input type="text" id="gmap_inp" name="gmap"
                                                         class="form-control shadow-none" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label fw-bold">Address</label>
-                                                    <input type="text" id="address_inp" name="address"
+                                                    <label class="form-label fw-bold">Phone No (with country
+                                                        code)</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i
+                                                                class="bi bi-telephone-fill"></i></span>
+                                                        <input type="text" id="pn1_inp" class="form-control shadow-none"
+                                                            name="pn1">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i
+                                                                class="bi bi-telephone-fill"></i></span>
+                                                        <input type="text" id="pn2_inp" class="form-control shadow-none"
+                                                            name="pn2">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Email</label>
+                                                    <input type="text" id="email_inp" name="email"
                                                         class="form-control shadow-none" required>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6"></div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Social Links</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i
+                                                                class="bi bi-facebook"></i></span>
+                                                        <input type="text" id="fb_inp" class="form-control shadow-none"
+                                                            name="fb" required>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i
+                                                                class="bi bi-instagram"></i></span>
+                                                        <input type="text" id="insta_inp"
+                                                            class="form-control shadow-none" name="insta" required>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i
+                                                                class="bi bi-twitter"></i></span>
+                                                        <input type="text" id="tw_inp" class="form-control shadow-none"
+                                                            name="tw">
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <label class="form-label fw-bold">iFrame Src</label>
+                                                        <input type="text" id="iframe_inp"
+                                                            class="form-control shadow-none" name="iframe">
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button"
-                                        onclick="site_title.value=general_data.site_title , site_about.value=general_data.site_about"
+                                    <button type="button" onclick="this.blur(); contacts_inp(contacts_data)"
                                         class="btn shadow-none text-secondary" data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn custom-bg text-white shadow-none">Submit</button>
                                 </div>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -219,6 +263,12 @@ adminLogin();
             e.preventDefault();
             upd_general(site_title_inp.value, site_about_inp.value)
 
+        });
+
+        let contact_s_form = document.getElementById('contact_s_form');
+        contact_s_form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            upd_contacts();
         });
 
         function get_general() {
@@ -260,6 +310,7 @@ adminLogin();
 
 
 
+
             let xhr = new XMLHttpRequest();
             xhr.open('POST', 'ajax/settings_crud.php', true);
             xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -267,14 +318,15 @@ adminLogin();
             xhr.onload = function () {
                 // general_data = JSON.parse(this.response);
                 contacts_data = JSON.parse(this.response);
-                console.log(contacts_data);
+                // console.log(contacts_data);
                 contacts_data = Object.values(contacts_data);
-                console.log(contacts_data);
+                // console.log(contacts_data);
                 for (let i = 0; i < contacts_p_id.length; i++) {
                     document.getElementById(contacts_p_id[i]).innerText = contacts_data[i + 1];
 
                 }
                 iframe.src = contacts_data[9];
+                contacts_inp(contacts_data);
 
 
 
@@ -283,6 +335,13 @@ adminLogin();
             xhr.send('get_contacts');
         }
 
+        function contacts_inp(contacts_data) {
+            let contacts_p_id_input = ['address_inp', 'gmap_inp', 'pn1_inp', 'pn2_inp', 'email_inp', 'fb_inp', 'insta_inp', 'tw_inp', 'iframe_inp'];
+            for (let i = 0; i < contacts_p_id_input.length; i++) {
+                document.getElementById(contacts_p_id_input[i]).value = contacts_data[i + 1];
+            }
+
+        }
 
 
 
@@ -306,6 +365,7 @@ adminLogin();
             xhr.send('site_title=' + site_title + '&site_about=' + site_about + '&upd_general');
         }
 
+
         function upd_shutdown(value) {
             let xhr = new XMLHttpRequest();
             xhr.open('POST', 'ajax/settings_crud.php', true);
@@ -323,6 +383,32 @@ adminLogin();
             xhr.send('upd_shutdown=' + value);
         }
 
+        function upd_contacts() {
+            let index = ['address', 'gmap', 'pn1', 'pn2', 'email', 'fb', 'insta', 'tw', 'iframe'];
+            let contacts_inp_id = ['address_inp', 'gmap_inp', 'pn1_inp', 'pn2_inp', 'email_inp', 'fb_inp', 'insta_inp', 'tw_inp', 'iframe_inp'];
+            let data_str = "";
+            for (let i = 0; i < contacts_inp_id.length; i++) {
+                data_str += index[i] + '=' + document.getElementById(contacts_inp_id[i]).value + '&';
+            }
+            data_str += 'upd_contacts';
+            // console.log(data_str);
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'ajax/settings_crud.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                var myModal = document.getElementById('contact-s')
+                var modal = bootstrap.Modal.getInstance(myModal) // Returns a Bootstrap modal instance
+                modal.hide() // Hide the modal
+                if (this.response == 1) {
+                    get_contacts();
+                    alert('success', 'Updated successfully');
+                } else {
+                    alert('error', 'Not Updated successfully');
+                }
+            }
+            xhr.send(data_str);
+        }
 
         window.onload = function () {
             get_general();
