@@ -50,7 +50,7 @@ adminLogin();
                 <div class="modal fade" id="general-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form >
+                        <form id="general_s_form">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">General Setting</h5>
@@ -110,6 +110,10 @@ adminLogin();
     <?php require('inc/scripts.php') ?>
     <script>
         let general_data;
+        let general_s_form = document.getElementById('general_s_form');
+        general_s_form.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
 
         function get_general() {
             let site_title = document.getElementById('siteTitle');
