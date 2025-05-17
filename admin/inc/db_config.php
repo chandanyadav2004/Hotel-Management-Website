@@ -103,6 +103,24 @@ function selectAll($table)
     }
 }
 
+function delete($sql, $values, $datatype)
+{
+    $con = $GLOBALS['con'];
+    if ($stmt = mysqli_prepare($con, $sql)) {
+        mysqli_stmt_bind_param($stmt, $datatype, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
+            return $res;
+        } else {
+            mysqli_stmt_close($stmt);
+            die("Query cannot be executed: Delete" . mysqli_error($con));
+        }
+    }  else {
+        die("Query cannot be prepared: Delete" . mysqli_error($con));
+    }
+}
+
 
 
 
