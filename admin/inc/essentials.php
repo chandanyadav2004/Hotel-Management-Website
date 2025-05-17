@@ -1,5 +1,14 @@
 <?php
 
+// Frontend upload process need this data
+define('SITE_URL', 'http://127.0.0.1/Hotel-Management-Website/');
+define('ABOUT_IMG_PATH', SITE_URL . 'images/about/');
+
+
+
+
+// Backend upload process need this data
+
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/Hotel-Management-Website/images/');
 define('ABOUT_FLODER', 'about/');
 // define('ROOM_FLO', '');
@@ -49,8 +58,24 @@ function uploadImage($image, $folder)
         $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
         $rname = 'IMG' . random_int(11111111, 9999999999) . "." . $ext;
         $img_path = UPLOAD_IMAGE_PATH . $folder . $rname;
-        
+        if(move_uploaded_file($image['tmp_name'], $img_path)){
+            return $rname; // return image name
+        }else{
+            return 'upd_failed'; // invalid upload
+        }
 
+
+    }
+}
+
+function deleteImage($img_name, $folder)
+{
+    $img_path = UPLOAD_IMAGE_PATH . $folder . $img_name;
+    if (file_exists($img_path)) {
+        unlink($img_path);
+        return true;
+    }else{
+        return false;
     }
 }
 
