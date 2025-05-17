@@ -476,7 +476,8 @@ adminLogin();
 
         function add_member() {
             let form_data = new FormData();
-            form_data.append('member_name', name);
+            form_data.append('member_name', member_name_inp.value);
+            let picture = member_picture_inp.files[0];
             form_data.append('member_picture', picture);
             form_data.append('add_member', true);
 
