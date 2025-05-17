@@ -245,6 +245,20 @@ adminLogin();
                 </div>
 
 
+                <!-- Management Team Setting section -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">Management Team</h5>
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#team-s">
+                                <i class="bi bi-pencil-square me-1"></i>Add
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
 
             </div>
         </div>
