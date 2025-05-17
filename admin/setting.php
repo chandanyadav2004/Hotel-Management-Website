@@ -324,10 +324,8 @@ adminLogin();
         });
 
         let team_s_form = document.getElementById('team_s_form');
-        team_s_form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-        });
+        let member_name_inp = document.getElementById('member_name_inp');
+        let member_picture_inp = document.getElementById('member_picture_inp');
 
 
         function get_general() {
@@ -467,6 +465,37 @@ adminLogin();
                 }
             }
             xhr.send(data_str);
+        }
+
+
+        team_s_form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            add_member();
+        });
+
+
+        function add_member() {
+            let form_data = new FormData();
+            form_data.append('member_name', name);
+            form_data.append('member_picture', picture);
+            form_data.append('add_member', true);
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'ajax/settings_crud.php', true);
+
+            xhr.onload = function () {
+                var myModal = document.getElementById('team-s')
+                var modal = bootstrap.Modal.getInstance(myModal) // Returns a Bootstrap modal instance
+                modal.hide() // Hide the modal
+                if (this.response == 1) {
+                    get_team();
+                    alert('success', 'Member added successfully');
+                } else {
+                    alert('error', 'Member not added successfully');
+                }
+            }
+
+            xhr.send(form_data);
         }
 
         window.onload = function () {
