@@ -240,6 +240,7 @@ adminLogin();
                                         class="btn shadow-none text-secondary" data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn custom-bg text-white shadow-none">Submit</button>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
