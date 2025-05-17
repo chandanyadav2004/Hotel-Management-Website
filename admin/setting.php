@@ -282,7 +282,7 @@ adminLogin();
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">Picture </label>
                                         <input type="file" name="member_picture" id="member_picture_inp"
-                                            class="form-control shadow-none" accept="[.jpg,png,.webp,jpeg]" required>
+                                            class="form-control shadow-none" accept=".jpg,png,.webp,.jpeg" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -322,6 +322,13 @@ adminLogin();
             e.preventDefault();
             upd_contacts();
         });
+
+        let team_s_form = document.getElementById('team_s_form');
+        team_s_form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+        });
+
 
         function get_general() {
             let site_title = document.getElementById('siteTitle');
