@@ -92,6 +92,17 @@ function insert($sql, $values, $datatype)
 }
 
 
+function selectAll($table)
+{
+    $con = $GLOBALS['con'];
+   $res = mysqli_query($con, "SELECT * FROM $table");
+    if ($res) {
+        return $res;
+    } else {
+        die("Query cannot be executed: selectAll" . mysqli_error($con));
+    }
+}
+
 
 
 
