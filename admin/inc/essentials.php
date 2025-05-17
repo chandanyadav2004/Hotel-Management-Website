@@ -39,6 +39,19 @@ function alert($type, $msg)
 function uploadImage($image, $folder)
 {
     $valid_mime = ['image/jpeg', 'image/png', 'image/jpg'];
+    $img_mime = $image['type'];
+
+    if (!in_array($img_mime, $valid_mime)) {
+        return 'inv_img'; // invalid image
+    } else if ($image['size'] > 2000000) {
+        return 'inv_size'; // invalid size
+    } else {
+        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $rname = 'IMG' . random_int(11111111, 9999999999) . "." . $ext;
+        $img_path = UPLOAD_IMAGE_PATH . $folder . $rname;
+        
+
+    }
 }
 
 
