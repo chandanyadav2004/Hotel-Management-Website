@@ -253,12 +253,49 @@ adminLogin();
                             <h5 class="card-title m-0">Management Team</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#team-s">
-                                <i class="bi bi-pencil-square me-1"></i>Add
+                                <i class="bi bi-plus-square me-1"></i>Add
                             </button>
                         </div>
 
+                        <div class="row" id="team-data">
+
+                        </div>
                     </div>
                 </div>
+
+
+                <!-- Management Team Setting section Modal -->
+                <div class="modal fade" id="team-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form id="team_s_form">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Add Team Member</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Name</label>
+                                        <input type="text" id="member_name_inp" name="member_name"
+                                            class="form-control shadow-none" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Picture </label>
+                                        <input type="file" name="member_picture" id="member_picture_inp"
+                                            class="form-control shadow-none" accept="[.jpg,png,.webp,jpeg]" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" onclick="" class="btn shadow-none text-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn custom-bg text-white shadow-none">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
 
 
             </div>
