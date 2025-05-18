@@ -185,13 +185,13 @@ adminLogin();
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i
                                                                 class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" id="pn1_inp" class="form-control shadow-none"
+                                                        <input type="number" id="pn1_inp" class="form-control shadow-none"
                                                             name="pn1">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i
                                                                 class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" id="pn2_inp" class="form-control shadow-none"
+                                                        <input type="number" id="pn2_inp" class="form-control shadow-none"
                                                             name="pn2">
                                                     </div>
                                                 </div>
