@@ -388,10 +388,18 @@
             <i class="bi bi-telephone-fill"></i>+<?php echo $contact_res['pn1']; ?>
           </a>
           <br>
+          <?php
+          if ($contact_res['pn2'] != '') {
+            echo<<<data
+            
+              <a href="tel: +$contact_res[pn2]" class="d-inline-block  text-decoration-none text-dark ">
+                <i class="bi bi-telephone-fill"></i>+$contact_res[pn2]
+              </a>
+            
+            data;
+          }
           
-          <a href="tel: +<?php echo $contact_res['pn2']; ?>" class="d-inline-block  text-decoration-none text-dark ">
-            <i class="bi bi-telephone-fill"></i>+<?php echo $contact_res['pn2']; ?>
-          </a>
+          ?>
         </div>
         <div class="bg-white p-4 rounded mb-4">
           <h5>Follow us</h5>
