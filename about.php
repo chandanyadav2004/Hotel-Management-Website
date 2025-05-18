@@ -89,42 +89,19 @@
 <div class="container px-4">
     <div class="swiper mySwiper ">
       <div class="swiper-wrapper mb-5">
-        <div class="swiper-slide bg-white rounded text-center overflow-hidden">
-          <img src="images/about/team.jpg" class="w-100">
-          <h5 class="mt-2">Random Name 1</h5>
-        </div>
-        <div class="swiper-slide bg-white rounded text-center overflow-hidden">
-          <img src="images/about/team.jpg" class="w-100">
-          <h5 class="mt-2">Random Name 2</h5>
-        </div>
-        <div class="swiper-slide bg-white rounded text-center overflow-hidden">
-          <img src="images/about/team.jpg" class="w-100">
-          <h5 class="mt-2">Random Name 3</h5>
-        </div>
-        <div class="swiper-slide bg-white rounded text-center overflow-hidden">
-          <img src="images/about/team.jpg" class="w-100">
-          <h5 class="mt-2">Random Name 4</h5>
-        </div>
-        <div class="swiper-slide bg-white rounded text-center overflow-hidden">
-          <img src="images/about/team.jpg" class="w-100">
-          <h5 class="mt-2">Random Name 5</h5>
-        </div>
-        <div class="swiper-slide bg-white rounded text-center overflow-hidden">
-          <img src="images/about/team.jpg" class="w-100">
-          <h5 class="mt-2">Random Name 6</h5>
-        </div>
-        <div class="swiper-slide bg-white rounded text-center overflow-hidden">
-          <img src="images/about/team.jpg" class="w-100">
-          <h5 class="mt-2">Random Name 7</h5>
-        </div>
-        <div class="swiper-slide bg-white rounded text-center overflow-hidden">
-          <img src="images/about/team.jpg" class="w-100">
-          <h5 class="mt-2">Random Name 8</h5>
-        </div>
-        <div class="swiper-slide bg-white rounded text-center overflow-hidden">
-          <img src="images/about/team.jpg" class="w-100">
-          <h5 class="mt-2">Random Name 9 </h5>
-        </div>
+        <?php 
+          $about_r = selectAll('team_details');
+          $path  = ABOUT_IMG_PATH;
+          while($row = mysqli_fetch_assoc($about_r)){
+            echo<<<data
+              <div class="swiper-slide bg-white rounded text-center overflow-hidden">
+                <img src="$path/$row[picture]" class="w-100 " style="height: 400px;">
+                <h5 class="mt-2">$row[name]</h5>
+              </div>
+
+            data;
+          }
+        ?>
 
       </div>
       <div class="swiper-pagination"></div>
