@@ -1,4 +1,5 @@
 <?php  require('admin/inc/essentials.php') ?>
+<?php require('admin/inc/db_config.php') ?>
 
 
 
