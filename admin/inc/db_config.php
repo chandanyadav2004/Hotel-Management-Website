@@ -24,8 +24,10 @@ if (!$con) {
 function filteration($data)
 {
     foreach ($data as $key => $value) {
-        $data[$key] = strip_tags(htmlspecialchars(stripslashes(trim($value))));
-        // $data[$key] = strip_tags($value);
+        $data[$key] = trim($value);
+        $data[$key] = stripslashes($value);
+        $data[$key] = htmlspecialchars($value);
+        $data[$key] = strip_tags($value);
     }
     return $data;
 }
