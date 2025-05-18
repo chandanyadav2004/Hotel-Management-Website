@@ -422,7 +422,7 @@
             
               <a href="$contact_res[fb]" class="d-inline-block mb-3 ">
                 <span class="badge fs-6 p-2 bg-light text-dark">
-                  <i class="bi bi-twitter me-1"></i>Facebook
+                  <i class="bi bi-facebook me-1"></i>Facebook
                 </span>
               </a>
               <br>
@@ -434,7 +434,7 @@
             
               <a href="$contact_res[insta]" class="d-inline-block mb-3 ">
                 <span class="badge fs-6 p-2 bg-light text-dark">
-                  <i class="bi bi-twitter me-1"></i>Instagram
+                  <i class="bi bi-instagram me-1"></i>Instagram
                 </span>
               </a>
               <br>
