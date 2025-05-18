@@ -1,3 +1,6 @@
+
+
+
 <div class="container-fluid bg-white mt-5">
       <div class="row">
         <div class="col-lg-4 p-4">
@@ -9,17 +12,54 @@
         </div>
         <div class="col-lg-4 p-4">
           <h5 class="mb-3">Links</h5>
-          <a href="#" class="d-inline-block mb-3 text-dark text-decoration-none">Home</a><br>
-          <a href="#" class="d-inline-block mb-3 text-dark text-decoration-none">Rooms</a><br>
-          <a href="#" class="d-inline-block mb-3 text-dark text-decoration-none">Facilities</a><br>
-          <a href="#" class="d-inline-block mb-3 text-dark text-decoration-none">Contact us</a><br>
-          <a href="#" class="d-inline-block mb-3 text-dark text-decoration-none">About</a><br>
+          <a href="index.php" class="d-inline-block mb-3 text-dark text-decoration-none">Home</a><br>
+          <a href="rooms.php" class="d-inline-block mb-3 text-dark text-decoration-none">Rooms</a><br>
+          <a href="facilities.php" class="d-inline-block mb-3 text-dark text-decoration-none">Facilities</a><br>
+          <a href="contact.php" class="d-inline-block mb-3 text-dark text-decoration-none">Contact us</a><br>
+          <a href="about.php" class="d-inline-block mb-3 text-dark text-decoration-none">About</a><br>
         </div>
         <div class="col-lg-4 p-4">
           <h5 class="mb-3">Follow us</h5>
-          <a href="#" class="d-inline-block text-dark text-decoration-none  mb-2 "><i class="bi bi-twitter me-1"></i>Twitter</a><br>
-          <a href="#" class="d-inline-block text-dark text-decoration-none  mb-2 "><i class="bi bi-facebook me-1"></i>Facebook</a><br>
-          <a href="#" class="d-inline-block text-dark text-decoration-none   "><i class="bi bi-instagram me-1"></i>Instagram</a><br>
+          <?php
+          if ($contact_res['tw'] != '') {
+            echo<<<data
+            
+              <a href="$contact_res[tw]" class="d-inline-block mb-3 ">
+                <span class="badge fs-6 p-2 bg-light text-dark">
+                  <i class="bi bi-twitter me-1"></i>Twitter
+                </span>
+              </a>
+              <br>
+            
+            data;
+          }
+
+          if ($contact_res['fb'] != '') {
+            echo<<<data
+            
+              <a href="$contact_res[fb]" class="d-inline-block mb-3 ">
+                <span class="badge fs-6 p-2 bg-light text-dark">
+                  <i class="bi bi-facebook me-1"></i>Facebook
+                </span>
+              </a>
+              <br>
+            
+            data;
+          }
+          if ($contact_res['insta'] != '') {
+            echo<<<data
+            
+              <a href="$contact_res[insta]" class="d-inline-block mb-3 ">
+                <span class="badge fs-6 p-2 bg-light text-dark">
+                  <i class="bi bi-instagram me-1"></i>Instagram
+                </span>
+              </a>
+              <br>
+            
+            data;
+          }
+          
+          ?>
         </div>
       </div>
     </div>
