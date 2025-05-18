@@ -403,23 +403,46 @@
         </div>
         <div class="bg-white p-4 rounded mb-4">
           <h5>Follow us</h5>
-          <a href="#" class="d-inline-block mb-3 ">
-            <span class="badge fs-6 p-2 bg-light text-dark">
-              <i class="bi bi-twitter me-1"></i>Twitter
-            </span>
-          </a>
-          <br>
-          <a href="#" class="d-inline-block mb-3 ">
-            <span class="badge fs-6 p-2 bg-light text-dark">
-              <i class="bi bi-facebook me-1"></i>Facebook
-            </span>
-          </a>
-          <br>
-          <a href="#" class="d-inline-block  ">
-            <span class="badge fs-6 p-2 bg-light text-dark">
-              <i class="bi bi-instagram me-1"></i>Instagram
-            </span>
-          </a>
+          <?php
+          if ($contact_res['tw'] != '') {
+            echo<<<data
+            
+              <a href="$contact_res[tw]" class="d-inline-block mb-3 ">
+                <span class="badge fs-6 p-2 bg-light text-dark">
+                  <i class="bi bi-twitter me-1"></i>Twitter
+                </span>
+              </a>
+              <br>
+            
+            data;
+          }
+
+          if ($contact_res['fb'] != '') {
+            echo<<<data
+            
+              <a href="$contact_res[fb]" class="d-inline-block mb-3 ">
+                <span class="badge fs-6 p-2 bg-light text-dark">
+                  <i class="bi bi-twitter me-1"></i>Facebook
+                </span>
+              </a>
+              <br>
+            
+            data;
+          }
+          if ($contact_res['insta'] != '') {
+            echo<<<data
+            
+              <a href="$contact_res[insta]" class="d-inline-block mb-3 ">
+                <span class="badge fs-6 p-2 bg-light text-dark">
+                  <i class="bi bi-twitter me-1"></i>Instagram
+                </span>
+              </a>
+              <br>
+            
+            data;
+          }
+          
+          ?>
 
         </div>
       </div>
