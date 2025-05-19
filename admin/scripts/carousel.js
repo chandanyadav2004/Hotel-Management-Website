@@ -20,7 +20,7 @@ function add_image() {
 
   xhr.onload = function () {
     // console.log(this.response);
-    var myModal = document.getElementById("team-s");
+    var myModal = document.getElementById("carousel-s");
     var modal = bootstrap.Modal.getInstance(myModal); // Returns a Bootstrap modal instance
     modal.hide(); // Hide the modal
     if (this.responseText == "inv_img") {
@@ -30,16 +30,16 @@ function add_image() {
     } else if (this.responseText == "upd_failed") {
       alert("error", "Image upload failed");
     } else {
-      alert("success", "Member added successfully");
+      alert("success", "Image added successfully");
       carousel_picture_inp.value = "";
-      get_members();
+      get_carousel();
     }
   };
 
   xhr.send(form_data);
 }
 
-function get_members() {
+function get_carousel() {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "ajax/settings_crud.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -49,7 +49,7 @@ function get_members() {
     document.getElementById("team-data").innerHTML = this.responseText;
   };
 
-  xhr.send("get_members");
+  xhr.send("get_carousel");
 }
 
 function rem_member(id) {
@@ -61,7 +61,7 @@ function rem_member(id) {
     // console.log(this.response);
     if (this.responseText == 1) {
       alert("success", "Member deleted successfully");
-      get_members();
+      get_carousel();
     } else {
       alert("error", "Member not deleted successfully");
     }
@@ -71,5 +71,5 @@ function rem_member(id) {
 }
 
 window.onload = function () {
-  get_members();
+  get_carousel();
 };
