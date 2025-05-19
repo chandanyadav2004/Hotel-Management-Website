@@ -34,5 +34,5 @@
       }
     }       
   }
-  window.onload = setActive;
+  setActive();
 </script>
