@@ -16,7 +16,7 @@ function add_image() {
   form_data.append("add_image", "");
 
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "ajax/settings_crud.php", true);
+  xhr.open("POST", "ajax/carousel_crud.php", true);
 
   xhr.onload = function () {
     // console.log(this.response);
@@ -46,7 +46,7 @@ function get_carousel() {
 
   xhr.onload = function () {
     // console.log(this.response);
-    document.getElementById("team-data").innerHTML = this.responseText;
+    document.getElementById("carousel-data").innerHTML = this.responseText;
   };
 
   xhr.send("get_carousel");
