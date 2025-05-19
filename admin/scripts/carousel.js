@@ -41,7 +41,7 @@ function add_image() {
 
 function get_carousel() {
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "ajax/settings_crud.php", true);
+  xhr.open("POST", "ajax/carousel_crud.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   xhr.onload = function () {
@@ -52,22 +52,22 @@ function get_carousel() {
   xhr.send("get_carousel");
 }
 
-function rem_member(id) {
+function rem_image(id) {
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "ajax/settings_crud.php", true);
+  xhr.open("POST", "ajax/carousel_crud.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   xhr.onload = function () {
     // console.log(this.response);
     if (this.responseText == 1) {
-      alert("success", "Member deleted successfully");
+      alert("success", "Image deleted successfully");
       get_carousel();
     } else {
-      alert("error", "Member not deleted successfully");
+      alert("error", "Image not deleted successfully");
     }
   };
 
-  xhr.send("rem_member=" + id);
+  xhr.send("rem_image=" + id);
 }
 
 window.onload = function () {
