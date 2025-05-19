@@ -1,8 +1,7 @@
 
 
 let carousel_s_form = document.getElementById("carousel_s_form");
-let member_name_inp = document.getElementById("member_name_inp");
-let member_picture_inp = document.getElementById("member_picture_inp");
+let carousel_picture_inp = document.getElementById("carousel_picture_inp");
 
 
 carousel_s_form.addEventListener("submit", function (e) {
@@ -12,8 +11,7 @@ carousel_s_form.addEventListener("submit", function (e) {
 
 function add_member() {
   let form_data = new FormData();
-  form_data.append("name", member_name_inp.value);
-  let picture = member_picture_inp.files[0];
+  let picture = carousel_picture_inp.files[0];
   form_data.append("picture", picture);
   form_data.append("add_member", "");
 
@@ -33,8 +31,7 @@ function add_member() {
       alert("error", "Image upload failed");
     } else {
       alert("success", "Member added successfully");
-      member_name_inp.value = "";
-      member_picture_inp.value = "";
+      carousel_picture_inp.value = "";
       get_members();
     }
   };
@@ -74,7 +71,5 @@ function rem_member(id) {
 }
 
 window.onload = function () {
-  get_general();
-  get_contacts();
   get_members();
 };

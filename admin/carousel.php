@@ -59,22 +59,17 @@ adminLogin();
                         <form id="carousel_s_form">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Add Team Member</h5>
+                                    <h5 class="modal-title">Add Image</h5>
                                 </div>
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label class="form-label fw-bold">Name</label>
-                                        <input type="text" id="member_name_inp" name="member_name"
-                                            class="form-control shadow-none" required>
-                                    </div>
-                                    <div class="mb-3">
                                         <label class="form-label fw-bold">Picture </label>
-                                        <input type="file" name="member_picture" id="member_picture_inp"
+                                        <input type="file" name="carousel_picture" id="carousel_picture_inp"
                                             class="form-control shadow-none" accept=".jpg,png,.webp,.jpeg" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" onclick="member_name.value='',member_picture.value=''"
+                                    <button type="button" onclick="carousel_picture.value=''"
                                         class="btn shadow-none text-secondary" data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn custom-bg text-white shadow-none">Submit</button>
                                 </div>
