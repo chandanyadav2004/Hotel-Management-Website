@@ -6,14 +6,14 @@ let carousel_picture_inp = document.getElementById("carousel_picture_inp");
 
 carousel_s_form.addEventListener("submit", function (e) {
   e.preventDefault();
-  add_member();
+  add_image();
 });
 
-function add_member() {
+function add_image() {
   let form_data = new FormData();
   let picture = carousel_picture_inp.files[0];
   form_data.append("picture", picture);
-  form_data.append("add_member", "");
+  form_data.append("add_image", "");
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "ajax/settings_crud.php", true);
