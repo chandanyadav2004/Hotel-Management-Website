@@ -37,24 +37,18 @@
     <!-- Swiper -->
     <div class="swiper swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="images/carousel/1.png" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="images/carousel/2.png" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="images/carousel/3.png" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="images/carousel/4.png" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="images/carousel/5.png" class="w-100 d-block" />
-        </div>
-        <div class="swiper-slide">
-          <img src="images/carousel/6.png" class="w-100 d-block" />
-        </div>
+        <?php
+        $res = selectAll('carousel');
+        while ($row = mysqli_fetch_assoc($res)) {
+          $path = CAROUSEL_IMG_PATH;
+          echo <<<data
+          
+          <div class="swiper-slide">
+            <img src="$path$row[image]" class="w-100 d-block" />
+          </div>
+        data;
+        }
+        ?>
       </div>
     </div>
   </div>
@@ -364,12 +358,12 @@
 
   <!-- Reach Us  -->
 
-    <?php 
-      $contact_q = "SELECT * FROM `contact_details` where `sr_no`=?";
-      $values = [1];
-      $contact_res = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
-      // print_r($contact_res);
-    ?>
+  <?php
+  $contact_q = "SELECT * FROM `contact_details` where `sr_no`=?";
+  $values = [1];
+  $contact_res = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
+  // print_r($contact_res);
+  ?>
 
 
 
@@ -377,20 +371,19 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded">
-        <iframe class="w-100 rounded" height="320px"
-          src="<?php echo $contact_res['iframe'] ?>"
-          loading="lazy"></iframe>
+        <iframe class="w-100 rounded" height="320px" src="<?php echo $contact_res['iframe'] ?>" loading="lazy"></iframe>
       </div>
       <div class="col-lg-4 col-md-4">
         <div class="bg-white p-4 rounded mb-4">
           <h5>Call us</h5>
-          <a href="tel: +<?php echo $contact_res['pn1']; ?>" class="d-inline-block mb-2 text-decoration-none text-dark ">
+          <a href="tel: +<?php echo $contact_res['pn1']; ?>"
+            class="d-inline-block mb-2 text-decoration-none text-dark ">
             <i class="bi bi-telephone-fill"></i>+<?php echo $contact_res['pn1']; ?>
           </a>
           <br>
           <?php
           if ($contact_res['pn2'] != '') {
-            echo<<<data
+            echo <<<data
             
               <a href="tel: +$contact_res[pn2]" class="d-inline-block  text-decoration-none text-dark ">
                 <i class="bi bi-telephone-fill"></i>+$contact_res[pn2]
@@ -398,14 +391,14 @@
             
             data;
           }
-          
+
           ?>
         </div>
         <div class="bg-white p-4 rounded mb-4">
           <h5>Follow us</h5>
           <?php
           if ($contact_res['tw'] != '') {
-            echo<<<data
+            echo <<<data
             
               <a href="$contact_res[tw]" class="d-inline-block mb-3 ">
                 <span class="badge fs-6 p-2 bg-light text-dark">
@@ -418,7 +411,7 @@
           }
 
           if ($contact_res['fb'] != '') {
-            echo<<<data
+            echo <<<data
             
               <a href="$contact_res[fb]" class="d-inline-block mb-3 ">
                 <span class="badge fs-6 p-2 bg-light text-dark">
@@ -430,7 +423,7 @@
             data;
           }
           if ($contact_res['insta'] != '') {
-            echo<<<data
+            echo <<<data
             
               <a href="$contact_res[insta]" class="d-inline-block mb-3 ">
                 <span class="badge fs-6 p-2 bg-light text-dark">
@@ -441,7 +434,7 @@
             
             data;
           }
-          
+
           ?>
 
         </div>
