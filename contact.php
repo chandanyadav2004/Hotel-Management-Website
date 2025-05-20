@@ -123,26 +123,26 @@
       </div>
       <div class="col-lg-6 col-md-6 mb-5 px-4">
         <div class="bg-white rounded shadow p-4 ">
-          <form action="">
+          <form method="POST">
             <h5>Send a message</h5>
             <div class="mt-3">
               <label class="form-label" style="font-weight:500;">Name</label>
-              <input type="text" class="form-control shadow-none">
+              <input type="text" name="name" required class="form-control shadow-none">
             </div>
             <div class="mt-3">
               <label class="form-label" style="font-weight:500;">Email</label>
-              <input type="email" class="form-control shadow-none">
+              <input type="email" name="email" required class="form-control shadow-none">
             </div>
             <div class="mt-3">
               <label class="form-label" style="font-weight:500;">Subject</label>
-              <input type="text" class="form-control shadow-none">
+              <input type="text" name="subject" required class="form-control shadow-none">
             </div>
             <div class="mt-3">
               <label class="form-label" style="font-weight:500;">Message</label>
-              <textarea rows="6" class="form-control shadow-none" style="resize:none;"></textarea>
+              <textarea rows="6"name="message" required class="form-control shadow-none" style="resize:none;"></textarea>
             </div>
             <div class="mt-3">
-              <button type="submit" class="btn text-white custom-bg shadow-none">Send Message</button>
+              <button type="submit" name="send" class="btn text-white custom-bg shadow-none">Send Message</button>
           </form>
         </div>
       </div>
@@ -152,7 +152,20 @@
     </div>
   </div>
 
+  <?php
+    if (isset($_POST['send'])) {
+      $frm_data = filteration($_POST);
+      $q = "INSERT INTO `user_queries`( `name`, `email`, `subject`, `message`) VALUES (?,?,?,?)";
+      $values = [$frm_data['name'], $frm_data['email'], $frm_data['subject'], $frm_data['message']];
+      $res = insert($q, $values, 'ssss');
+      if ($res==1) {
+        alert('success', 'Message sent successfully');
+      } else {
+        alert('error', 'Unable to send message');
+      }
+    }
 
+  ?>
 
   <!-- Footer Section -->
   <?php require('include/footer.php'); ?>
