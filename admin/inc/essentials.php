@@ -37,7 +37,7 @@ function redirect($url)
 
 function alert($type, $msg)
 {
-    $bs_class = ($type == "success") ? "alert-sucess" : "alert-danger";
+    $bs_class = ($type == "success") ? "alert-success" : "alert-danger";
     echo <<<alert
         <div class="alert $bs_class alert-dismissible fade show custom-alert" role="alert">
             <strong class="me-3">$msg</strong>
@@ -60,9 +60,9 @@ function uploadImage($image, $folder)
         $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
         $rname = 'IMG' . random_int(11111111, 9999999999) . "." . $ext;
         $img_path = UPLOAD_IMAGE_PATH . $folder . $rname;
-        if(move_uploaded_file($image['tmp_name'], $img_path)){
+        if (move_uploaded_file($image['tmp_name'], $img_path)) {
             return $rname; // return image name
-        }else{
+        } else {
             return 'upd_failed'; // invalid upload
         }
 
@@ -76,7 +76,7 @@ function deleteImage($img_name, $folder)
     if (file_exists($img_path)) {
         unlink($img_path);
         return true;
-    }else{
+    } else {
         return false;
     }
 }
