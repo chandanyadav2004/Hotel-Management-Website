@@ -3,60 +3,6 @@ require('inc/essentials.php');
 require('inc/db_config.php');
 adminLogin();
 
-if (isset(($_GET['seen']))) {
-    $frm_data = filteration($_GET);
-
-    if ($frm_data['seen'] == 'all') {
-        $q = "UPDATE `user_queries` SET `seen`=?";
-        $values = [1];
-        $res = update($q, $values, 'i');
-        if ($res == 1) {
-            alert('success', 'Query marked all as read');
-        } else {
-            alert('error', 'Unable to mark query  all as read');
-        }
-        header('Location: user_queries.php');
-        exit;
-
-    } else {
-        $q = "UPDATE `user_queries` SET `seen`=? WHERE `sr_no`=?";
-        $values = [1, $frm_data['seen']];
-        $res = update($q, $values, 'ii');
-        if ($res == 1) {
-            alert('success', 'Query marked as read');
-        } else {
-            alert('error', 'Unable to mark query as read');
-        }
-        header('Location: user_queries.php');
-        exit;
-    }
-}
-if (isset(($_GET['del']))) {
-    $frm_data = filteration($_GET);
-
-    if ($frm_data['del'] == 'all') {
-        $q = "DELETE FROM `user_queries` ";
-
-        if (mysqli_query($con, $q)) {
-            alert('success', 'Deleted all queries');
-        } else {
-            alert('error', 'Operation failed');
-        }
-        header('Location: user_queries.php');
-        exit;
-
-    } else {
-        $q = "DELETE FROM `user_queries` WHERE `sr_no`=?";
-        $values = [$frm_data['del']];
-        if (delete($q, $values, 'i')) {
-            alert('success', 'Deleted as read');
-        } else {
-            alert('error', 'Unable to unable as read');
-        }
-        header('Location: user_queries.php');
-        exit;
-    }
-}
 
 
 ?>
