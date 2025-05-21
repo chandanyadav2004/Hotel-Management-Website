@@ -150,7 +150,7 @@ if (isset(($_GET['del']))) {
 
     <!-- Features section Modal -->
     <div class="modal fade" id="feature-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        aria-labelledby="staticBackdropLabel" >
         <div class="modal-dialog">
             <form id="feature_s_form">
                 <div class="modal-content">
@@ -177,7 +177,7 @@ if (isset(($_GET['del']))) {
 
     <!-- Facility section Modal -->
     <div class="modal fade" id="facility-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        aria-labelledby="staticBackdropLabel" >
         <div class="modal-dialog">
             <form id="facilities_s_form">
                 <div class="modal-content">
@@ -308,14 +308,14 @@ if (isset(($_GET['del']))) {
                     alert("success", "New Facility added successfully");
                     facilities_s_form.reset();
                     // get_members();
-                    get_features();
+                    get_facilities();
                 }
             };
 
             xhr.send(form_data);
         }
 
-        function get_features() {
+        function get_facilities() {
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "ajax/features_facilities.php", true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -336,7 +336,7 @@ if (isset(($_GET['del']))) {
                 // console.log(this.response);
                 if (this.responseText == 1) {
                     alert("success", "Facility deleted successfully");
-                    get_features();
+                    get_facilities();
                 } else if (this.responseText == 'rooms_added') {
                     alert("error", "Unable to delete facility, it is already added in rooms");
                 }
@@ -352,6 +352,7 @@ if (isset(($_GET['del']))) {
 
         window.onload = function () {
             get_features();
+            get_facilities();
         }
     </script>
 
