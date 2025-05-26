@@ -157,7 +157,7 @@ adminLogin();
 
 
     <?php require('inc/scripts.php') ?>
-    
+    <script src="scripts/features_facility.js"></script>
 
 
 </body>
