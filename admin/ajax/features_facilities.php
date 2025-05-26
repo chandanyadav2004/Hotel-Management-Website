@@ -43,7 +43,7 @@ if (isset($_POST['rem_feature'])) {
     echo $res;   
 }
 
-if (isset($_POST['add_feature'])) {
+if (isset($_POST['add_facility'])) {
     $frm_data = filteration($_POST);
 
     $img_r=uploadSVGImage($_FILES['icon'], FACILITIES_FLODER);

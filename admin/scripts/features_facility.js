@@ -23,8 +23,8 @@ function add_feature() {
     modal.hide(); // Hide the modal
     if (this.responseText == 1) {
       alert("success", "Features added successfully");
-      feature_s_form.elements["feature_name"].value = "";
       get_features();
+      feature_s_form.elements["feature_name"].value = "";
     } else {
       alert("error", "Unable to add features");
     }
@@ -74,7 +74,7 @@ function add_facility() {
     facilities_s_form.elements["facility_icon"].files[0]
   );
   form_data.append("desc", facilities_s_form.elements["facility_desc"].value);
-  form_data.append("add_feature", "");
+  form_data.append("add_facility", "");
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "ajax/features_facilities.php", true);
@@ -92,9 +92,9 @@ function add_facility() {
       alert("error", "Image upload failed");
     } else {
       alert("success", "New Facility added successfully");
-      facilities_s_form.reset();
       // get_members();
       get_facilities();
+      facilities_s_form.reset();
     }
   };
 

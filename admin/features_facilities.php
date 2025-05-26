@@ -96,7 +96,7 @@ adminLogin();
 
     <!-- Features section Modal -->
     <div class="modal fade" id="feature-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" >
+        aria-labelledby="staticBackdropLabel" aria-hidden="true" >
         <div class="modal-dialog">
             <form id="feature_s_form">
                 <div class="modal-content">
@@ -123,7 +123,7 @@ adminLogin();
 
     <!-- Facility section Modal -->
     <div class="modal fade" id="facility-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" >
+        aria-labelledby="staticBackdropLabel" aria-hidden="true" >
         <div class="modal-dialog">
             <form id="facilities_s_form">
                 <div class="modal-content">
