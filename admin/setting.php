@@ -47,8 +47,7 @@ adminLogin();
                 </div>
 
                 <!-- General Setting section Modal -->
-                <div class="modal fade" id="general-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
-                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="general-s"  >
                     <div class="modal-dialog">
                         <form id="general_s_form">
                             <div class="modal-content">
@@ -157,8 +156,7 @@ adminLogin();
                 </div>
 
                 <!-- Contact us details  section Modal -->
-                <div class="modal fade" id="contact-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
-                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="contact-s" >
                     <div class="modal-dialog modal-lg">
                         <form id="contact_s_form">
                             <div class="modal-content">
@@ -276,8 +274,7 @@ adminLogin();
 
 
                 <!-- Management Team Setting section Modal -->
-                <div class="modal fade" id="team-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
-                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="team-s" >
                     <div class="modal-dialog">
                         <form id="team_s_form">
                             <div class="modal-content">
