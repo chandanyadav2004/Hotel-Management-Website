@@ -327,7 +327,7 @@ adminLogin();
 
     <?php require('inc/scripts.php') ?>
 
-    <script src="rooms.js"></script>
+    <script src="scripts/rooms.js"></script>
 
 </body>
 
