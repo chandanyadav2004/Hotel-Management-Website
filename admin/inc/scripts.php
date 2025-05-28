@@ -4,16 +4,21 @@
 
 
 <script>
-      function alert(type, msg) {
+      function alert(type, msg , position='body') {
             let bs_class = (type == "success") ? "alert-success" : "alert-danger";
             let element = document.createElement('div');
             element.innerHTML = `
-                <div class="alert ${bs_class} alert-dismissible fade show custom-alert" role="alert">
+                <div class="alert ${bs_class} alert-dismissible fade show " role="alert">
                     <strong class="me-3">${msg}</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             `;
-            document.body.appendChild(element);
+            if(position=='body'){
+              document.body.appendChild(element);
+              element.classList.add('custom-alert')
+            }else{
+              document.getElementById(position).appendChild(element);
+            }
             setTimeout(remAlert, 2000);
       } 
       
