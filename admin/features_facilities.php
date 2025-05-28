@@ -122,8 +122,7 @@ adminLogin();
     </div>
 
     <!-- Facility section Modal -->
-    <div class="modal fade" id="facility-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+    <div class="modal fade" id="facility-s"  >
         <div class="modal-dialog">
             <form id="facilities_s_form">
                 <div class="modal-content">
