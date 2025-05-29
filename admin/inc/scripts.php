@@ -26,9 +26,7 @@
             document.getElementsByClassName('alert')[0].remove();
       }
       
-</script>
 
-<script>
   function setActive() {
     let navbar = document.getElementById('dashboard-menu');
     let a_tags = navbar.getElementsByTagName('a');
