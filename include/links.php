@@ -6,6 +6,9 @@
 <?php require('admin/inc/essentials.php') ?>
 <?php require('admin/inc/db_config.php') ?>
 <?php
+
+session_start();
+
 $contact_q = "SELECT * FROM `contact_details` where `sr_no`=?";
 $setting_q = "SELECT * FROM `setting` where `sr_no`=?";
 
