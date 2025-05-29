@@ -23,7 +23,12 @@ define('ROOM_FLODER', 'rooms/');
 define('USERS_FLODER', 'users/');
 
 
-// define('ROOM_FLO', '');
+// PHP Mailer Creds
+define('PHP_MAIL_EMAIL', 'demo8788151949@gmail.com');
+define('PHP_MAIL_PASS', 'pyrqrqpvkfotksdw');
+define('PHP_MAIL_NAME', 'Chandan Hotel');
+
+
 
 
 function adminLogin()

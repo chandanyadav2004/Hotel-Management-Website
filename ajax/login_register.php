@@ -24,13 +24,13 @@ function sendMail($email, $name, $token)
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'demo8788151949@gmail.com';
-        $mail->Password = 'pyrqrqpvkfotksdw'; // Gmail App Password
+        $mail->Username = PHP_MAIL_EMAIL;
+        $mail->Password = PHP_MAIL_PASS; // Gmail App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
         // Email headers & body
-        $mail->setFrom('demo8788151949@gmail.com', 'Chandan Hotel');
+        $mail->setFrom(PHP_MAIL_EMAIL, PHP_MAIL_NAME);
         $mail->addAddress($email, $name);
         $mail->isHTML(true);
         $mail->Subject = 'Email Verification Link';
