@@ -2,16 +2,21 @@
 <?php require('admin/inc/db_config.php') ?>
 <?php
 $contact_q = "SELECT * FROM `contact_details` where `sr_no`=?";
+$setting_q = "SELECT * FROM `setting` where `sr_no`=?";
+
 $values = [1];
 $contact_res = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
+$setting_res = mysqli_fetch_assoc(select($setting_q, $values, 'i'));
+
 // print_r($contact_res);
+
 ?>
 
 
 <!-- Nav Bar  -->
 <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light bg-white ps-lg-3 py-lg-2 shadow-sm sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">Chandan Hotel</a>
+    <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php"><?php echo  $setting_res['site_title'] ?></a>
     <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
       aria-label="Toggle navigation">
