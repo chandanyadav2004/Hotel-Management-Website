@@ -36,7 +36,7 @@ function sendMail($email, $name, $token)
         $mail->Subject = 'Email Verification Link';
         $mail->Body = "Hi $name,<br><br>
             Click below to verify your email:<br>
-            <a href='".SITE_URL."email_confirm.php?email=$email&token=$token"."'>Verify Email</a><br><br>
+            <a href='".SITE_URL."email_confirm.php?email_confirmation&email=$email&token=$token"."'>Verify Email</a><br><br>
             If you didn’t register, ignore this email.";
 
         $mail->send();
