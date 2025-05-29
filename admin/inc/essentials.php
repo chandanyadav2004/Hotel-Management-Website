@@ -6,6 +6,8 @@ define('ABOUT_IMG_PATH', SITE_URL . 'images/about/');
 define('CAROUSEL_IMG_PATH', SITE_URL . 'images/carousel/');
 define('FACILITIES_IMG_PATH', SITE_URL . 'images/facilities/');
 define('ROOM_IMG_PATH', SITE_URL . 'images/rooms/'); 
+define('USERS_IMG_PATH', 'images/users/');
+
 
 
 
@@ -18,6 +20,8 @@ define('ABOUT_FLODER', 'about/');
 define('CAROUSEL_FLODER', 'carousel/');
 define('FACILITIES_FLODER', 'facilities/');
 define('ROOM_FLODER', 'rooms/');
+define('USERS_FLODER', 'users/');
+
 
 // define('ROOM_FLO', '');
 
@@ -109,6 +113,36 @@ function uploadSVGImage($image, $folder)
 
     }
 }
+
+function uploadUserImage($image) {
+    $valid_mime = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+    $img_mime = $image['type'];
+
+    if (!in_array($img_mime, $valid_mime)) {
+        return 'inv_img'; // invalid image
+    }
+
+    $ext = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION)); // normalize extension
+    $rname = 'IMG_' . random_int(11111111, 9999999999) . ".jpeg"; // Save all as JPEG
+    $img_path = UPLOAD_IMAGE_PATH . USERS_FLODER . $rname;
+
+    // Create image resource from uploaded file
+    if ($ext == 'png') {
+        $img = imagecreatefrompng($image['tmp_name']);
+    } else if ($ext == 'webp') {
+        $img = imagecreatefromwebp($image['tmp_name']);
+    } else {
+        $img = imagecreatefromjpeg($image['tmp_name']);
+    }
+
+    // Convert and save image as JPEG with 75% quality
+    if (imagejpeg($img, $img_path, 75)) {
+        return $rname; // return the saved filename
+    } else {
+        return 'upd_failed'; // image save failed
+    }
+}
+
 
 
 ?>
