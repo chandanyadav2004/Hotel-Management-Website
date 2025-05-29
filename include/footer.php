@@ -82,7 +82,7 @@
     } else {
       document.getElementById(position).appendChild(element);
     }
-    setTimeout(remAlert, 3000);
+    setTimeout(remAlert, 2000);
   }
 
   function remAlert() {
