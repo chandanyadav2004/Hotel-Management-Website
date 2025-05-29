@@ -118,6 +118,10 @@
             while ($fea_row = mysqli_fetch_assoc($fea_q)) {
               $features_data .= "<span class='badge rounded-pill bg-light text-dark text-wrap lh-base me-1 mb-1'>$fea_row[name]</span>";
             }
+            $book_btn = "";
+            if (!$setting_res['shutdown']) {
+              $book_btn = "<a href='#' class='btn  w-100 text-white custom-bg shadow-none mb-1'>Book Now</a>";
+            }
             echo <<<feature
               <div class='features mb-3'>
                   <h6 class='mb-1'>Features</h6>
@@ -147,7 +151,7 @@
 
             guests;
 
-            echo<<<area
+            echo <<<area
               <div class='features mb-3'>
                   <h6 class='mb-1'>Area</h6>
                   <span class='badge rounded-pill bg-light text-dark text-wrap lh-base me-1 mb-1'>$room_data[area] sq.ft.</span>
@@ -155,10 +159,10 @@
                 </div>
             area;
 
-            echo<<<book
-              <a href='#' class='btn  w-100 text-white custom-bg shadow-none mb-1'>Book Now</a>
+            echo <<<book
+              $book_btn
             book;
-           
+
             ?>
           </div>
 
@@ -177,20 +181,20 @@
           <h5 class="mb-3">Reviews & Rating</h5>
           <div>
             <div class=" d-flex align-items-center mb-2">
-            <img src="images/facilities/IMG_47816.svg" width="30px">
-            <h6 class="m-0 ms-2 ">Random user1</h6>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Animi, autem qui voluptas nemo inventore sapiente.
-            Ipsum blanditiis laudantium reiciendis quibusdam!
-          </p>
-          <div class="rating">
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-          </div>
+              <img src="images/facilities/IMG_47816.svg" width="30px">
+              <h6 class="m-0 ms-2 ">Random user1</h6>
+            </div>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Animi, autem qui voluptas nemo inventore sapiente.
+              Ipsum blanditiis laudantium reiciendis quibusdam!
+            </p>
+            <div class="rating">
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+            </div>
           </div>
         </div>
       </div>

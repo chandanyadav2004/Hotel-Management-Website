@@ -113,7 +113,10 @@
             $thumb_row = mysqli_fetch_assoc($thumb_q);
             $room_thumb = ROOM_IMG_PATH . $thumb_row['image'];
           }
-
+          $book_btn = "";
+          if (!$setting_res['shutdown']) {
+            $book_btn = "<a href='#' class='btn btn-sm w-100 text-white mb-2 custom-bg shadow-none'>Book Now</a>";
+          }
           // Print room card
           echo "
             <div class='card mb-4  border-0 shadow'>
@@ -139,14 +142,14 @@
               </div>
               <div class='col-md-2 mt-lg-0 mt-md-0 mt-4 text-center'>
                 <h6 class='mb-4'>₹$room_data[price] per night</h6>
-                <a href='#' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</a>
+                $book_btn
                 <a href='room_details.php?id=$room_data[id]' class='btn btn-sm w-100 btn-outline-dark shadow-none'>More details</a>
               </div>
             </div>
             </div>
           
           ";
-          
+
 
         }
 
@@ -156,7 +159,7 @@
 
 
 
-        
+
 
       </div>
 
