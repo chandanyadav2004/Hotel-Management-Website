@@ -9,6 +9,9 @@
 
 session_start();
 
+date_default_timezone_set("Asia/Kolkata");
+
+
 $contact_q = "SELECT * FROM `contact_details` where `sr_no`=?";
 $setting_q = "SELECT * FROM `setting` where `sr_no`=?";
 

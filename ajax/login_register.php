@@ -12,11 +12,20 @@ require('../include/PHPMailer-master/PHPMailer-master/src/SMTP.php');
 
 
 
-
 // require 'vendor/autoload.php'; 
 
-function sendMail($email, $name, $token)
+function sendMail($email, $token, $type)
 {
+    if ($type == 'email_confirmation') {
+        $page = 'email_confirm.php';
+        $subject = "Account Verification  links ";
+        $content = "Confirm Your Links ";
+    } else {
+        $page = 'index.php';
+        $subject = "Account Reset  links ";
+        $content = "Reset  Your Account ";
+    }
+
     $mail = new PHPMailer(true);
 
     try {
@@ -31,12 +40,12 @@ function sendMail($email, $name, $token)
 
         // Email headers & body
         $mail->setFrom(PHP_MAIL_EMAIL, PHP_MAIL_NAME);
-        $mail->addAddress($email, $name);
+        $mail->addAddress($email);
         $mail->isHTML(true);
-        $mail->Subject = 'Email Verification Link';
-        $mail->Body = "Hi $name,<br><br>
-            Click below to verify your email:<br>
-            <a href='" . SITE_URL . "email_confirm.php?email_confirmation&email=$email&token=$token" . "'>Verify Email</a><br><br>
+        $mail->Subject = $subject;
+        $mail->Body = "Hi Users,<br><br>
+            Click below to $content<br>
+            <a href='" . SITE_URL . "$page?$type&email=$email&token=$token" . "'>Verify Email</a><br><br>
             If you didn’t register, ignore this email.";
 
         $mail->send();
@@ -80,7 +89,9 @@ if (isset($_POST['register'])) {
     // Send confirmation link to users email
 
     $token = bin2hex(random_bytes(16));
-    $res_mail = sendMail($data['email'], $data['name'], $token);
+    $type = 'email_confirmation';
+
+    $res_mail = sendMail($data['email'], $token, $type);
 
     if ($res_mail == 0) {
         echo "mail_failed";
@@ -137,6 +148,60 @@ if (isset($_POST['login'])) {
         }
 
     }
+}
+
+if (isset($_POST['forgot_pass'])) {
+    $data = filteration($_POST);
+    $u_exist = select(
+        'SELECT * FROM `users_cred` WHERE `email`=? LIMIT 1',
+        [$data['email']],
+        's'
+    );
+
+    if (mysqli_num_rows($u_exist) == 0) {
+        echo 'inv_email';
+        exit;
+    } else {
+        $u_exist_fetch = mysqli_fetch_assoc($u_exist);
+        if ($u_exist_fetch['is_verified'] == 0) {
+            echo 'not_verified';
+        } else if ($u_exist_fetch['status'] == 0) {
+            echo 'inactive';
+        } else {
+            $token = bin2hex(random_bytes(16));
+            if (!sendMail($data['email'], $token, 'account_recovery')) {
+                echo "mail_failed";
+            } else {
+                $date = date("y-m-d");
+                $query = mysqli_query($con, "UPDATE `users_cred` SET `token` = '$token', `t_expire` = '$date' WHERE `id` = '$u_exist_fetch[id]' ");
+                if ($query) {
+                    echo 1;
+                } else {
+                    echo "upd_failed";
+                }
+            }
+
+
+        }
+    }
+
+}
+
+if (isset($_POST['recovery_user'])) {
+    $data = filteration($_POST);
+    $enc_pass = password_hash($data['pass'], PASSWORD_BCRYPT);
+    $sql = "UPDATE `users_cred` SET `password`=?, `token`=?, `t_expire`=? WHERE `email`=? AND `token`=? ";
+    $values = [$enc_pass, null, null, $data['email'], $data['token']];
+    $res=update($sql, $values, 'sssss');
+    
+
+    if ($res) {
+        echo 1;
+    } else {
+        echo 'failed';
+    }
+
+
 }
 
 ?>

@@ -60,7 +60,7 @@
       <div class="col-lg-12 bg-white shadow p-4 rounded">
         <h5 class="mb-4">Check Booking Availability</h5>
         <form action="">
-          <di class="row align-items-end">
+          <div class="row align-items-end">
             <div class="col-lg-3 mb-3">
               <label class="form-label" style="font-weight: 500;">Check-in</label>
               <input type="date" class="form-control shadow-none">
@@ -88,11 +88,11 @@
             <div class="col-lg-1 mb-lg-3 mt-2">
               <button type="submit" class="btn text-white shadow-none custom-bg">Submit</button>
             </div>
+          </div>
+        </form>
       </div>
-      </form>
-    </div>
 
-  </div>
+    </div>
   </div>
 
 
@@ -209,10 +209,11 @@
       }
 
       ?>
-      
-      
+
+
       <div class="col-lg-12 text-center mt-5">
-        <a href="facilities.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Facilities >>></a>
+        <a href="facilities.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Facilities
+          >>></a>
       </div>
     </div>
   </div>
@@ -356,7 +357,7 @@
       <div class="swiper-pagination"></div>
     </div>
     <div class="col-lg-12 text-center mt-5">
-      <a href="about.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Know More  >>></a>
+      <a href="about.php" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Know More >>></a>
     </div>
   </div>
 
@@ -449,12 +450,76 @@
   </div>
 
 
+  <!-- Password reset modal and code  -->
+  <div class="modal fade" id="recoveryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="recovery-form">
+          <div class="modal-header">
+            <h5 class="modal-title d-flex aligns-items-center">
+              <i class="bi bi-shield-lock fs-3 me-2"></i>Set up new Password
+            </h5>
+          </div>
+          <div class="modal-body">
+            <div class="mb-4">
+              <label class="form-label">New Password </label>
+              <input type="password" name="pass" required class="form-control shadow-none">
+              <input type="hidden" name="email">
+              <input type="hidden" name="token">
+            </div>
+            <div class="text-end mb-2">
+              <button type="button" class="btn shadow-none p-0 me-2" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-dark shadow-none ">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
   <!-- End Reach Us  -->
 
   <!-- Footer Section -->
   <?php require('include/footer.php'); ?>
   <!-- End Footer Section -->
 
+
+
+  <?php
+  if (isset($_GET['account_recovery'])) {
+    $data = filteration($_GET);
+    $t_date = date('y-m-d');
+    $query = select("SELECT * FROM `users_cred` WHERE `email`=? AND `token`=? AND `t_expire`=? LIMIT 1", [$data['email'], $data['token'], $t_date], 'sss');
+    if (mysqli_num_rows($query) == 1) {
+      echo <<<showModal
+            <script>
+               var myModal = document.getElementById('recoveryModal');
+                myModal.querySelector("input[name='email']").value = '$data[email]';
+              myModal.querySelector("input[name='token']").value = '$data[token]';
+
+             var modal = bootstrap.Modal.getOrCreateInstance(myModal);
+              modal.show();
+         </script>
+
+
+
+        showModal;
+
+    } else {
+      alert('error', "Invalid Expire Links");
+    }
+
+
+  }
+
+
+  ?>
 
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -503,6 +568,40 @@
       }
     });
 
+    // recovery Account 
+    let recovery_form = document.getElementById('recovery-form');
+    recovery_form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let data = new FormData();
+
+      data.append('email', recovery_form.elements['email'].value);
+      data.append('token', recovery_form.elements['token'].value);
+      data.append('pass', recovery_form.elements['pass'].value);
+
+      data.append('recovery_user', '');
+
+      var myModal = document.getElementById('recoveryModal');
+      var modal = bootstrap.Modal.getInstance(myModal);
+      modal.hide();
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "ajax/login_register.php", true);
+      xhr.onload = function () {
+
+
+        if (this.responseText == 'failed') {
+          alert('error', 'Account reset failed');
+        }
+        else {
+          alert('success', "Password reset successfully");
+          recovery_form.reset();
+        }
+      };
+
+      xhr.send(data);
+
+    });
 
   </script>
 </body>

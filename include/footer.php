@@ -205,6 +205,52 @@
   });
 
 
+  let forgot_form = document.getElementById('forgot-form');
+  forgot_form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let data = new FormData();
+
+    data.append('email', forgot_form.elements['email'].value);
+    data.append('forgot_pass', '');
+
+    var myModal = document.getElementById('forgotModal');
+    var modal = bootstrap.Modal.getInstance(myModal);
+    modal.hide();
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "ajax/login_register.php", true);
+    xhr.onload = function () {
+      // console.log('Server Response:', this.responseText);
+
+      let res = this.responseText.trim();
+
+      if (res == 'inv_email') {
+        alert('error', 'Invalid  email');
+      }
+      else if (res == 'not_verified') {
+        alert('error', 'Email Not Verified');
+      }
+       else if (res == 'inactive') {
+        alert('error', 'Admin Blocked contact admin');
+      } 
+      else if (res == 'mail_failed') {
+        alert('error', 'Mail Sent Failed');
+      }
+      else if (res == 'upd_failed') {
+        alert('error', 'Update Failed');
+      }
+      else{
+        alert('success', "Password updated successfully");
+        forgot_form.reset();
+      } 
+    };
+
+    xhr.send(data);
+
+  });
+
+
 
   setActive();
 
