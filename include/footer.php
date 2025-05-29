@@ -1,10 +1,10 @@
 <div class="container-fluid bg-white mt-5">
   <div class="row">
     <div class="col-lg-4 p-4">
-      <h3 class="h-font fw-bold fs-3 mb-2"><?php echo  $setting_res['site_title'] ?></h3>
+      <h3 class="h-font fw-bold fs-3 mb-2"><?php echo $setting_res['site_title'] ?></h3>
       <p>
-        <?php echo  $setting_res['site_about'] ?>
-        
+        <?php echo $setting_res['site_about'] ?>
+
       </p>
     </div>
     <div class="col-lg-4 p-4">
@@ -131,26 +131,32 @@
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "ajax/login_register.php", true);
     xhr.onload = function () {
-      if (this.responseText == 'pass_mismatch') {
-        alert('error', 'Password Is not Match with confirm password');
-      }else if (this.responseText == 'invalid_image') {
-        alert('error', 'Invalid Image TYpe JPG,PNG,WEBP, JPEG allows');
-      }else if (this.responseText == 'Upd_Failed') {
-        alert('error', 'Upload Failed');
-      }else if (this.responseText == 'email_already') {
-        alert('error', ' email already present');
-      }else if (this.responseText == 'phone_already') {
-        alert('error', ' phone already present');
-      }else if (this.responseText == 'mail_failed') {
-        alert('error', ' cannot sent confirmation mail');
-      }else if (this.responseText == 'ins_failed') {
-        alert('error', ' Insertion Failed ');
-      }else{
-        alert('success','Registration succcessfully');
-        register_form.reset();
-      }
+      console.log('Server Response:', this.responseText);
 
+      let res = this.responseText.trim();
+
+      if (res == 'pass_mismatch') {
+        alert('error', 'Password Is not Match with confirm password');
+      } else if (res == 'invalid_image') {
+        alert('error', 'Invalid Image Type: Only JPG, PNG, WEBP, JPEG allowed');
+      } else if (res == 'Upd_Failed') {
+        alert('error', 'Upload Failed');
+      } else if (res == 'email_already') {
+        alert('error', 'Email already registered');
+      } else if (res == 'phone_already') {
+        alert('error', 'Phone number already registered');
+      } else if (res == 'mail_failed') {
+        alert('error', 'Cannot send confirmation mail');
+      } else if (res == 'ins_failed') {
+        alert('error', 'Database insertion failed');
+      } else if (res == '1') {
+        alert('success', 'Registration successfully');
+        register_form.reset();
+      } else {
+        alert('error', 'Unknown error: ' + res);
+      }
     };
+
     xhr.send(data);
 
   });
