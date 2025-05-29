@@ -1,11 +1,10 @@
 <div class="container-fluid bg-white mt-5">
   <div class="row">
     <div class="col-lg-4 p-4">
-      <h3 class="h-font fw-bold fs-3 mb-2">Chandan Hotel</h3>
+      <h3 class="h-font fw-bold fs-3 mb-2"><?php echo  $setting_res['site_title'] ?></h3>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Rem molestiae obcaecati odio delectus cum commodi, ipsa iure voluptatum assumenda repellat beatae sapiente
-        perspiciatis aut omnis quae? Molestiae minima nisi vero.
+        <?php echo  $setting_res['site_about'] ?>
+        
       </p>
     </div>
     <div class="col-lg-4 p-4">
