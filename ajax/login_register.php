@@ -57,7 +57,7 @@ if (isset($_POST['register'])) {
         exit;
     }
     // check users exists or not 
-    $u_exist = select('SELECT * FROM `users_cred` WHERE `email`=?  AND `phonenum`=? LIMIT 1', [$data['email'], $data['phonenum']], 'ss');
+    $u_exist = select('SELECT * FROM `users_cred` WHERE `email`=?  OR `phonenum`=? LIMIT 1', [$data['email'], $data['phonenum']], 'ss');
 
     if (mysqli_num_rows($u_exist) != 0) {
         $u_exist_fetch = mysqli_fetch_assoc($u_exist);
