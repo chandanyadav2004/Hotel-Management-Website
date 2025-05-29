@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel Management Website - ROOMS </title>
   <?php require('include/links.php'); ?>
+  <title><?php echo $setting_res['site_title']; ?>- ROOMS </title>
 
 
   <style>
