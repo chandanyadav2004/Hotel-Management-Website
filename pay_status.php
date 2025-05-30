@@ -28,9 +28,9 @@
         <h2 class="fw-bold ">PAYMENT STATUS </h2>
         <?php
         $frm_data = filteration($_POST);
-        if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
-          redirect('index.php');
-        }
+        // if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
+        //   redirect('index.php');
+        // }
 
         $booking_q ="SELECT bo.*,bd.* FROM `booking_order` bo 
         INNER JOIN `booking_details` bd  ON bo.booking_id=bd.booking_id 
