@@ -196,7 +196,13 @@
         alert('error', 'Invalid Password');
       }
       else{
-        window.location = window.location.pathname;
+        let fileurl = window.location.href.split('/').pop().split('?').shift();
+        if(fileurl == 'room_details.php'){
+          window.location = window.location.href;
+        }
+        else{
+          window.location = window.location.pathname;
+        }
       } 
     };
 
@@ -250,7 +256,15 @@
 
   });
 
+ function checkLoginToBook(login,id){
+  if(login){
+    window.location.href='confirm_booking.php?id='+id;
+  }
+  else{
+    alert('error',"Please login to book room!");
+  }
 
+ }
 
   setActive();
 
