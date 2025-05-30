@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php require('include/links.php'); ?>
   <title><?php echo $setting_res['site_title']; ?>- CONFIRM BOOKINGS</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 
   <style>
@@ -106,7 +107,7 @@
       <div class="col-lg-5 col-md-12 px-4">
         <div class='card mb-4  border-0 shadow-sm rounded-3'>
           <div class="card-body">
-            <form action="#" id="booking_form">
+            <form id="booking_form">
               <h6 class="mb-3">BOOKING DETAILS</h6>
               <div class="row">
                 <div class="col-md-6  mb-3">
@@ -168,6 +169,7 @@
     let info_loader = document.getElementById('info_loader');
     let pay_info = document.getElementById('pay_info');
 
+
     function check_availability() {
       pay_info.classList.add('d-none');
       pay_info.classList.replace('text-dark', 'text-danger');
@@ -175,6 +177,7 @@
 
       let checkin_val = booking_form.elements['checkin'].value;
       let checkout_val = booking_form.elements['checkout'].value;
+
 
       booking_form.elements['pay_now'].setAttribute('disabled', true);
 
@@ -200,12 +203,13 @@
           } else {
             pay_info.innerHTML = "No. of Days: " + data.days + "<br> Total amount to pay: ₹" + data.payment;
             pay_info.classList.replace('text-danger', 'text-dark');
-            booking_form.elements['pay_now'].removeAttribute['disabled'];
+            booking_form.elements['pay_now'].removeAttribute(['disabled']);
+            startPayment();
 
           }
 
           pay_info.classList.remove('d-none');
-        info_loader.classList.add('d-none');
+          info_loader.classList.add('d-none');
 
         };
 
@@ -216,7 +220,70 @@
 
     }
 
+    function startPayment() {
+      // Call backend to create Razorpay order
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "pay_now.php", true);
+      let checkin_val = booking_form.elements['checkin'].value;
+      let checkout_val = booking_form.elements['checkout'].value;
+      let address = booking_form.elements['address'].value;
+      let data = new FormData();
+      data.append('create_order','');
+      data.append('checkin', checkin_val);
+      data.append('checkout', checkout_val);
+      data.append('address',address);
+
+      // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      xhr.onload = function () {
+        let res = JSON.parse(this.responseText);
+        console.log(res);
+
+        var options = {
+          "key": "rzp_test_U3eaz43mce5VWW",
+          "amount": res.amount,
+          "currency": "INR",
+          // "name": res.user_name,
+          "description": "Hotel Room Booking",
+          "image": "https://cdn.razorpay.com/logos/GhRQcyean79PqE_medium.png",
+          "order_id": res.order_id,
+          "handler": function (response) {
+            alert("Payment successful. Razorpay Payment ID: " + response.razorpay_payment_id);
+            // You should send response.razorpay_payment_id to server for verification and booking confirmation.
+          },
+          "theme": {
+            "color": "#3399cc"
+          }, "handler": function (response) {
+            alert(response.razorpay_payment_id);
+            alert(response.razorpay_order_id);
+            alert(response.razorpay_signature)
+          }
+        };
+
+        var rzp = new Razorpay(options);
+        rzp.open();
+
+        rzp.on('payment.failed', function (response) {
+          alert(response.error.code);
+          alert(response.error.description);
+          alert(response.error.source);
+          alert(response.error.step);
+          alert(response.error.reason);
+          alert(response.error.metadata.order_id);
+          alert(response.error.metadata.payment_id);
+        })
+      };
+
+      xhr.send(data);
+    }
+
+
+
+
+
+
   </script>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

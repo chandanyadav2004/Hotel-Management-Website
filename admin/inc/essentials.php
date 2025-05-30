@@ -29,6 +29,12 @@ define('PHP_MAIL_PASS', 'pyrqrqpvkfotksdw');
 define('PHP_MAIL_NAME', 'Chandan Hotel');
 
 
+// Api Keys Details 
+
+$api_sceret = '7QdtYh7j87VrqLpI4AXouFbb';
+$api_key = 'rzp_test_nRAU3YaPjFjCYg';
+
+
 
 
 function adminLogin()

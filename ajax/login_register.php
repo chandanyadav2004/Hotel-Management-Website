@@ -140,10 +140,13 @@ if (isset($_POST['login'])) {
             } else {
                 session_start();
                 $_SESSION['login'] = true;
-                $_SESSION['uId'] = $u_exist_fetch['id'];
-                $_SESSION['uName'] = $u_exist_fetch['name'];
-                $_SESSION['uPic'] = $u_exist_fetch['profile'];
-                $_SESSION['uPhone'] = $u_exist_fetch['phonenum'];
+                $_SESSION['uId'] = $u_exist_fetch['id'];         // User ID
+                $_SESSION['uName'] = $u_exist_fetch['name'];       // User's name
+                $_SESSION['uPic'] = $u_exist_fetch['profile'];    // Profile picture
+                $_SESSION['uPhone'] = $u_exist_fetch['phonenum'];   // Phone number
+                // $_SESSION['uAddress'] = $u_exist_fetch['address'];    // Address
+                $_SESSION['uPincode'] = $u_exist_fetch['pincode'];    // Pincode
+
                 echo 1;
             }
 
@@ -194,8 +197,8 @@ if (isset($_POST['recovery_user'])) {
     $enc_pass = password_hash($data['pass'], PASSWORD_BCRYPT);
     $sql = "UPDATE `users_cred` SET `password`=?, `token`=?, `t_expire`=? WHERE `email`=? AND `token`=? ";
     $values = [$enc_pass, null, null, $data['email'], $data['token']];
-    $res=update($sql, $values, 'sssss');
-    
+    $res = update($sql, $values, 'sssss');
+
 
     if ($res) {
         echo 1;
