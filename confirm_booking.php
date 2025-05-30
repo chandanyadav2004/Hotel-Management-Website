@@ -140,7 +140,8 @@
                     <span class="visually-hidden">Loading...</span>
                   </div>
                   <h6 class="mb-3 text-danger" id="pay_info">Provide check-in and Check-out dates !</h6>
-                  <button name="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1" disabled>Pay
+                  <button name="pay_now" id="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1"
+                    disabled>Pay
                     Now</button>
                 </div>
               </div>
@@ -168,6 +169,8 @@
     let booking_form = document.getElementById('booking_form');
     let info_loader = document.getElementById('info_loader');
     let pay_info = document.getElementById('pay_info');
+    let pay_now = document.getElementById('pay_now');
+
 
 
     function check_availability() {
@@ -204,13 +207,16 @@
             pay_info.innerHTML = "No. of Days: " + data.days + "<br> Total amount to pay: ₹" + data.payment;
             pay_info.classList.replace('text-danger', 'text-dark');
             booking_form.elements['pay_now'].removeAttribute(['disabled']);
-            startPayment();
+
 
           }
 
           pay_info.classList.remove('d-none');
           info_loader.classList.add('d-none');
-
+          document.getElementById('pay_now').addEventListener('click', function (event) {
+            event.preventDefault();
+            startPayment();
+          });
         };
 
         xhr.send(data);
@@ -228,10 +234,10 @@
       let checkout_val = booking_form.elements['checkout'].value;
       let address = booking_form.elements['address'].value;
       let data = new FormData();
-      data.append('create_order','');
+      data.append('create_order', '');
       data.append('checkin', checkin_val);
       data.append('checkout', checkout_val);
-      data.append('address',address);
+      data.append('address', address);
 
       // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
@@ -248,15 +254,17 @@
           "image": "https://cdn.razorpay.com/logos/GhRQcyean79PqE_medium.png",
           "order_id": res.order_id,
           "handler": function (response) {
-            alert("Payment successful. Razorpay Payment ID: " + response.razorpay_payment_id);
+            alert("success", `Payment successful. Razorpay Payment ID: ${response.razorpay_payment_id}`);
+            let trans_id = response.razorpay_payment_id;
+            let order_id = response.razorpay_order_id;
+            transationVerify(trans_id, order_id);
+            
+
+
             // You should send response.razorpay_payment_id to server for verification and booking confirmation.
           },
           "theme": {
             "color": "#3399cc"
-          }, "handler": function (response) {
-            alert(response.razorpay_payment_id);
-            alert(response.razorpay_order_id);
-            alert(response.razorpay_signature)
           }
         };
 
@@ -264,20 +272,39 @@
         rzp.open();
 
         rzp.on('payment.failed', function (response) {
-          alert(response.error.code);
-          alert(response.error.description);
-          alert(response.error.source);
-          alert(response.error.step);
+
           alert(response.error.reason);
-          alert(response.error.metadata.order_id);
-          alert(response.error.metadata.payment_id);
+
         })
+
+         window.location.href = 'pay_status.php?order=' + order_id;
       };
+     
 
       xhr.send(data);
     }
 
 
+    function transationVerify(trans_id, order_id) {
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "pay_now.php", true);
+      let data = new FormData();
+      data.append('transationVerify', '');
+      data.append('trans_id', trans_id);
+      data.append('order_id', order_id);
+
+      xhr.onload = function () {
+        if (this.responseText == '1') {
+          alert("success", "Your Booking Confirm");
+
+        }
+
+
+
+      }
+
+      xhr.send(data);
+    }
 
 
 

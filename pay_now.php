@@ -55,5 +55,48 @@ if (isset($_POST['create_order'])) {
         'amount' => $order['amount'] * 100,
 
     ]);
+
+    
 }
+
+if (isset($_POST['transationVerify'])) {
+    
+
+    $frm_data = filteration($_POST);
+
+    $trans_id = $frm_data['trans_id'];
+    $order_id = $frm_data['order_id'];
+
+
+    
+
+    $trans_status = 'Success'; // You can update this based on actual verification
+    $trans_amt = $_SESSION['room']['payment']; // Assuming this was set earlier
+    $booking_status = 'Booked'; // or whatever status you use
+
+    $query = "UPDATE `booking_order` SET 
+                `booking_status` = ?, 
+                `trans_id` = ?, 
+                `trans_amt` = ?, 
+                `trans_status` = ?
+              WHERE `order_id` = ?";
+
+    $res=insert($query, [$booking_status, $trans_id, $trans_amt, $trans_status, $order_id], 'sssss');
+    if($res){
+        
+    unset($_SESSION['room']);
+
+    }
+
+    
+
+    
+
+
+
+}
+
+
+
+
 ?>
