@@ -258,7 +258,6 @@
             let trans_id = response.razorpay_payment_id;
             let order_id = response.razorpay_order_id;
             transationVerify(trans_id, order_id);
-            // window.location.href = 'pay_status.php?order=' + order_id;
 
 
             // You should send response.razorpay_payment_id to server for verification and booking confirmation.
@@ -289,19 +288,19 @@
       let xhr = new XMLHttpRequest();
       xhr.open("POST", "pay_now.php", true);
       let data = new FormData();
-      data.append('transationVerify',true);
+      data.append('transationVerify', true);
       data.append('trans_id', trans_id);
       data.append('order_id', order_id);
 
       xhr.onload = function () {
         if (this.responseText.trim() == '1') {
           alert("success", "Your Booking is Confirmed!");
-          window.location.href = 'pay_status.php?order=' + order_id;
+
         } else {
           alert("error", "Transaction verification failed!");
         }
       };
-
+      window.location.href = 'pay_status.php?order=' + order_id;
       xhr.send(data);
     }
 

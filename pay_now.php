@@ -59,13 +59,38 @@ if (isset($_POST['create_order'])) {
     
 }
 
+// if (isset($_POST['transationVerify'])) {
+//     $frm_data = filteration($_POST);
+//     $trans_id = $frm_data['trans_id'];
+//     $order_id = $frm_data['order_id'];
+
+//     $trans_status = 'Success';
+//     $trans_amt = $_SESSION['room']['payment'] ?? 0;
+//     $booking_status = 'Booked';
+
+//     $query = "UPDATE `booking_order` SET 
+//                 `booking_status` = ?, 
+//                 `trans_id` = ?, 
+//                 `trans_amt` = ?, 
+//                 `trans_status` = ?
+//               WHERE `order_id` = ?";
+
+//     $res = insert($query, [$booking_status, $trans_id, $trans_amt, $trans_status, $order_id], 'sssss');
+//     if($res){
+//         echo 1;
+//     }else{
+//         echo 0;
+//     }
+// }
+
 if (isset($_POST['transationVerify'])) {
     $frm_data = filteration($_POST);
+
     $trans_id = $frm_data['trans_id'];
     $order_id = $frm_data['order_id'];
 
-    $trans_status = 'Success';
-    $trans_amt = $_SESSION['room']['payment'] ?? 0;
+    $trans_status = 'Success'; // Assume success for now (should be verified)
+    $trans_amt = $_SESSION['room']['payment'];
     $booking_status = 'Booked';
 
     $query = "UPDATE `booking_order` SET 
@@ -76,10 +101,19 @@ if (isset($_POST['transationVerify'])) {
               WHERE `order_id` = ?";
 
     $res = insert($query, [$booking_status, $trans_id, $trans_amt, $trans_status, $order_id], 'sssss');
-    if($res){
+
+    if ($res) {
+        unset($_SESSION['room']);
         echo 1;
-    }else{
-        echo 0;
+        // ✅ Redirect to status page with order ID
+        redirect("pay_status.php?order=$order_id");
+    } else {
+        echo "Database update failed.";
     }
 }
+
+
+
+
+
 ?>

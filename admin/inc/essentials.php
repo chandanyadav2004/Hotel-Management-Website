@@ -29,6 +29,8 @@ define('PHP_MAIL_PASS', 'pyrqrqpvkfotksdw');
 define('PHP_MAIL_NAME', 'Chandan Hotel');
 
 
+// Possible Booking Values can be - Pending, Booked , Payment Failed , Cancelled 
+
 // Api Keys Details 
 
 $api_sceret = '7QdtYh7j87VrqLpI4AXouFbb';

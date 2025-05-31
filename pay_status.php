@@ -27,23 +27,33 @@
       <div class="col-12 my-5 mb-4 px-4">
         <h2 class="fw-bold ">PAYMENT STATUS </h2>
         <?php
-        $frm_data = filteration($_POST);
-        // if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
-        //   redirect('index.php');
-        // }
-
-        $booking_q ="SELECT bo.*,bd.* FROM `booking_order` bo 
-        INNER JOIN `booking_details` bd  ON bo.booking_id=bd.booking_id 
-        WHERE bo.order_id=?  AND bo.user_id=? AND bo.booking_status !=?";
-
-        $booking_res = select($booking_q,[$frm_data['order'],$_SESSION['uId'],'pending'],'sis');
-        if(mysqli_num_rows($booking_res)==0){
+        if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
+          redirect('index.php');
+        }
+        if (!isset($_SESSION['uId'])) {
           redirect('index.php');
         }
 
+        $frm_data = filteration($_GET); // because you're passing order in URL
+        
+        $booking_q = "SELECT bo.*, bd.* FROM `booking_order` bo  INNER JOIN `booking_details` bd ON bo.booking_id = bd.booking_id 
+        WHERE bo.order_id = ? AND bo.user_id = ? AND bo.booking_status != ?";
+
+        $booking_res = select($booking_q, [$frm_data['order'], $_SESSION['uId'], 'pending'], 'sss');
+
         $booking_fetch = mysqli_fetch_assoc($booking_res);
-        if($booking_fetch['trans_status']=='Success'){
-          echo<<<data
+
+
+        if (!$booking_res || mysqli_num_rows($booking_res) == 0) {
+          redirect('index.php');
+          exit;
+        }
+
+        // if (mysqli_num_rows($booking_res) == 0) {
+        //   redirect('index.php');
+        // }else
+        if ($booking_fetch['trans_status'] == 'Success') {
+          echo <<<data
           <div class="col-12 px-4">
             <p class="fw-bold alert alert-success">
               <i class="bi bi-check-circle-fill"></i>
@@ -51,13 +61,10 @@
               <br><br>
               <a href='bookings.php'>Go to Bookings</a>
             </p>
-
           </div>
-
           data;
-
-        }else{
-          echo<<<data
+        } else {
+          echo <<<data
           <div class="col-12 px-4">
             <p class="fw-bold alert alert-success">
               <i class="bi bi-exclamation-triangle"></i>
@@ -65,36 +72,19 @@
               <br><br>
               <a href='bookings.php'>Go to Bookings</a>
             </p>
-
           </div>
-
           data;
-          
-        }
 
+        }
         ?>
 
       </div>
 
-      
-
-
-
-
-
-
     </div>
   </div>
 
-
-
   <!-- Footer Section -->
   <?php require('include/footer.php'); ?>
-
-  
-
-
-
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 </body>
