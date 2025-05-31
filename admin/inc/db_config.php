@@ -2,7 +2,7 @@
 
 /* Database name is hbwebsite
 Table name  admin_cred
-Three coloumns 1. sr_no 2. admin_name 3. admin_pass */  
+Three coloumns 1. sr_no 2. admin_name 3. admin_pass */
 
 ?>
 
@@ -24,14 +24,19 @@ if (!$con) {
 function filteration($data)
 {
     foreach ($data as $key => $value) {
-        $value = trim($value);
-        $value = stripslashes($value);
-        $value = strip_tags($value);
-        $value = htmlspecialchars($value);
-        $data[$key] = $value;
+        if (is_array($value)) {
+            // Recursively sanitize sub-arrays if needed
+            $data[$key] = filteration($value);
+        } else {
+            $value = trim($value);
+            $value = stripslashes($value);
+            $value = htmlspecialchars($value);
+            $data[$key] = $value;
+        }
     }
     return $data;
 }
+
 
 function select($sql, $values, $datatype)
 {
@@ -98,7 +103,7 @@ function insert($sql, $values, $datatype)
 function selectAll($table)
 {
     $con = $GLOBALS['con'];
-   $res = mysqli_query($con, "SELECT * FROM $table");
+    $res = mysqli_query($con, "SELECT * FROM $table");
     if ($res) {
         return $res;
     } else {
@@ -119,7 +124,7 @@ function delete($sql, $values, $datatype)
             mysqli_stmt_close($stmt);
             die("Query cannot be executed: Delete" . mysqli_error($con));
         }
-    }  else {
+    } else {
         die("Query cannot be prepared: Delete" . mysqli_error($con));
     }
 }
