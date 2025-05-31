@@ -30,6 +30,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="new_booking.php">New Booking</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="refund_booking.php">Refund Booking</a>
+                                </li>
                                 
                                 
                             </ul>
