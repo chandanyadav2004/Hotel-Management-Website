@@ -86,10 +86,9 @@ if (isset($_POST['remove_user'])) {
 
 if (isset($_POST['search_user'])) {
     $frm_data = filteration($_POST);
-
     $query = "SELECT * FROM `users_cred` WHERE `name` LIKE ?";
+    $res = select($query, ["%{$frm_data['name']}%"], 's');
 
-    $res = select($query,['%$frm_data[name]%'], 's');
     $i = 1;
     $url = SITE_URL;
     $path = USERS_IMG_PATH;
@@ -100,16 +99,15 @@ if (isset($_POST['search_user'])) {
         $del_btn = "
         <button type='button' onclick='remove_user($row[id])' class='btn btn-danger shadow-none btn-sm'>
             <i class='bi bi-trash'></i>
-        </button> ";
+        </button>";
 
         $verified = "<span class='badge bg-warning'><i class='bi bi-x-lg'></i></span>";
         if ($row['is_verified'] == 1) {
             $verified = "<span class='badge bg-success'><i class='bi bi-check-lg'></i></span>";
-            $del_btn = '';
-
+            $del_btn = ''; // don't show delete button if verified
         }
-        $status = "<button onclick='toggle_status($row[id],0)' class='btn btn-dark btn-sm shadow-none'>active</button>";
 
+        $status = "<button onclick='toggle_status($row[id],0)' class='btn btn-dark btn-sm shadow-none'>active</button>";
         if (!$row['status']) {
             $status = "<button onclick='toggle_status($row[id],1)' class='btn btn-danger btn-sm shadow-none'>inactive</button>";
         }
@@ -119,9 +117,7 @@ if (isset($_POST['search_user'])) {
         $data .= "
             <tr>
                 <td>$i</td>
-                <td>
-                <img src='$url$path$row[profile]' width='55px'>
-                $row[name]</td>
+                <td><img src='$url$path$row[profile]' width='55px'> $row[name]</td>
                 <td>$row[email]</td>
                 <td>$row[phonenum]</td>
                 <td>$row[address] $row[pincode]</td>
@@ -130,10 +126,7 @@ if (isset($_POST['search_user'])) {
                 <td>$status</td>
                 <td>$date</td>
                 <td>$del_btn</td>
-
-            
             </tr>
-        
         ";
         $i++;
     }
