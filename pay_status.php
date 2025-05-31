@@ -44,10 +44,10 @@
         $booking_fetch = mysqli_fetch_assoc($booking_res);
 
 
-        if (!$booking_res || mysqli_num_rows($booking_res) == 0) {
-          redirect('index.php');
-          exit;
-        }
+        // if (!$booking_res || mysqli_num_rows($booking_res) == 0) {
+        //   redirect('index.php');
+        //   exit;
+        // }
 
         // if (mysqli_num_rows($booking_res) == 0) {
         //   redirect('index.php');
