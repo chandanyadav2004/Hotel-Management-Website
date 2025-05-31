@@ -36,7 +36,7 @@ adminLogin();
                         <div class="table-responsive">
                             <table class="table table-hover border">
                                 <thead>
-                                    <tr class="bg-dark text-light">
+                                    <tr class="bg-dark text-light" style="min-width: 1200px;"></tr>>
                                         <th scope="col">#</th>
                                         <th scope="col">User Details</th>
                                         <th scope="col">Room Details</th>
