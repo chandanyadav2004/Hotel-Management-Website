@@ -54,9 +54,9 @@ function search_user(username){
   xhr.onload = function () {
     document.getElementById("users-data").innerHTML = this.responseText;
   };
-  xhr.send("search_user&name="+username);
-
+  xhr.send("search_user=true&name=" + encodeURIComponent(username));
 }
+
 
 
 
