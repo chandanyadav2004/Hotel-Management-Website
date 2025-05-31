@@ -11,7 +11,7 @@ adminLogin();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - REFUND BOOKING </title>
+    <title>Admin Panel - BOOKING RECORDS </title>
     <?php require('inc/links.php') ?>
 </head>
 
@@ -22,13 +22,13 @@ adminLogin();
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">REFUND BOOKING </h3>
+                <h3 class="mb-4">BOOKING RECORDS </h3>
 
                 <!-- Features section Card -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="text-end mb-4">
-                            <input type="text" onclick="get_booking(this.value)" id=""
+                            <input type="text" id="search_input" onclick="get_booking(this.value)" id=""
                                 class="form-control shadow-none w-25 ms-auto" placeholder="Type any thing to search">
                         </div>
 
@@ -40,7 +40,8 @@ adminLogin();
                                         <th scope="col">#</th>
                                         <th scope="col">User Details</th>
                                         <th scope="col">Room Details</th>
-                                        <th scope="col">Refund Amount</th>
+                                        <th scope="col">Booking Details</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -48,6 +49,15 @@ adminLogin();
                                 </tbody>
                             </table>
                         </div>
+
+
+                        <nav>
+                            <ul class="pagination mt-3" id="table-pagination">
+                               
+                            </ul>
+                        </nav>
+
+
 
 
                     </div>
@@ -58,13 +68,13 @@ adminLogin();
     </div>
 
 
-    <!-- Assign Room section Modal -->
-   
+
+
 
 
     <?php require('inc/scripts.php') ?>
 
-    <script src="scripts/refund_booking.js"></script>
+    <script src="scripts/booking_records.js"></script>
 
 </body>
 
