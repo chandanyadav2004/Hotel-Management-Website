@@ -11,7 +11,7 @@ adminLogin();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Carousel</title>
+    <title>Admin Panel - CAROUSEL</title>
     <?php require('inc/links.php') ?>
 </head>
 
@@ -22,13 +22,13 @@ adminLogin();
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">Carousel</h3>
+                <h3 class="mb-4">CAROUSEL</h3>
 
                 <!-- Carousel Setting section -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Carousel</h5>
+                            <h5 class="card-title m-0">CAROUSEL</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#carousel-s">
                                 <i class="bi bi-plus-square me-1"></i>Add

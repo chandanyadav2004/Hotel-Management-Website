@@ -11,7 +11,7 @@ adminLogin();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Rooms </title>
+    <title>Admin Panel - ROOMS </title>
     <?php require('inc/links.php') ?>
 </head>
 
@@ -22,7 +22,7 @@ adminLogin();
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">Rooms </h3>
+                <h3 class="mb-4">ROOM </h3>
 
                 <!-- Features section Card -->
                 <div class="card border-0 shadow-sm mb-4">

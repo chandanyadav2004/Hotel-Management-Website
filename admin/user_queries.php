@@ -74,7 +74,7 @@ if(isset(($_GET['del']))){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - user_queries</title>
+    <title>Admin Panel - USER QUERIES</title>
     <?php require('inc/links.php') ?>
 </head>
 
@@ -85,7 +85,7 @@ if(isset(($_GET['del']))){
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">Users Queries</h3>
+                <h3 class="mb-4">USERS QUERIES</h3>
 
                 <!-- Users Queries section -->
                 <div class="card border-0 shadow-sm mb-4">

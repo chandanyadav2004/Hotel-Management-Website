@@ -14,7 +14,7 @@ adminLogin();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Features and Facilities </title>
+    <title>Admin Panel - FEATURES AND FACILITIES </title>
     <?php require('inc/links.php') ?>
 </head>
 
@@ -25,13 +25,13 @@ adminLogin();
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">Features and Facilities </h3>
+                <h3 class="mb-4">FEATURES AND FACILITIES </h3>
 
                 <!-- Features section Card -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Features</h5>
+                            <h5 class="card-title m-0">FEATURES</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#feature-s">
                                 <i class="bi bi-plus-square me-1"></i>Add
@@ -61,7 +61,7 @@ adminLogin();
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Facilities</h5>
+                            <h5 class="card-title m-0">FACILITIES</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#facility-s">
                                 <i class="bi bi-plus-square me-1"></i>Add
