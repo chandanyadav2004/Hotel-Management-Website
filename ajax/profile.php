@@ -72,7 +72,7 @@ if (isset($_POST['profile_form'])) {
 
     // Correct types: s = string, i = integer
     if (update($query, $values, 'ss')) {
-        $_SESSION['uPic'] = $frm_data['profile'];
+        $_SESSION['uPic'] = $img;
         echo 1;
     } else {
         echo 0;

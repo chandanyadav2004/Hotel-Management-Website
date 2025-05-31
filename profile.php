@@ -92,7 +92,7 @@
         <div class="bg-white p-3 p-md-4 rounded shadow-sm">
           <form id="profile-form">
             <h5 class="mb-3 fw-bold">Picture Information</h5>
-            <img src="<?php echo USERS_IMG_PATH . $u_exist_fetch['profile'] ?>" class="img-fluid"><br>
+            <img src="<?php echo USERS_IMG_PATH . $u_exist_fetch['profile'] ?>" class="rounded-circle img-fluid"><br>
 
             <label class="form-label">New Picture</label>
             <input name="profile" type="file" class="form-control shadow-none mb-3" accept=".jpg,.png,.jpeg,.webp"
