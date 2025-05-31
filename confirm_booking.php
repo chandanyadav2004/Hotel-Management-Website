@@ -201,7 +201,7 @@
             pay_info.innerText = 'Check_out date earlier than check-in day';
           } else if (data.status == 'check_in_earlier') {
             pay_info.innerText = 'Check_in date earlier than check_out day';
-          } else if (data.status == 'unavailable') {
+          } else if (data.status == 'Unavailable') {
             pay_info.innerText = ' Room Not availabe for this .Check_in date ';
           } else {
             pay_info.innerHTML = "No. of Days: " + data.days + "<br> Total amount to pay: ₹" + data.payment;
