@@ -104,6 +104,26 @@
 
       </div>
 
+      <div class="col-md-8 mb-5 px-4">
+        <div class="bg-white p-3 p-md-4 rounded shadow-sm">
+          <form id="pass-form">
+            <h5 class="mb-3 fw-bold">Change Password</h5>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">New Password </label>
+                <input name="new_pass" type="password" class="form-control shadow-none" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Confirm Password </label>
+                <input name="confirm_pass" type="password" class="form-control shadow-none" required>
+              </div>
+            </div>
+            <button type="submit" class="btn text-white custom-bg  shadow-none ">Save Changes</button>
+          </form>
+        </div>
+
+      </div>
+
 
 
 
@@ -178,16 +198,57 @@
           alert('error', 'Invalid Image Type: Only JPG, PNG, WEBP, JPEG allowed');
         } else if (res == 'Upd_Failed') {
           alert('error', 'Upload Failed');
-        }else if (this.responseText == 0) {
+        } else if (this.responseText == 0) {
           alert('error', 'No Changes');
-        }else{
+        } else {
           window.location.href = window.location.pathname;
 
         }
       }
-        xhr.send(data);
+      xhr.send(data);
 
-      })
+    })
+
+
+
+
+    let pass_form = document.getElementById('pass-form');
+    pass_form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let new_pass = pass_form.elements['new_pass'].value;
+      let confirm__pass = pass_form.elements['confirm_pass'].value;
+
+      if (new_pass != confirm__pass) {
+        alert('error', 'Password do not match');
+        return false;
+      }
+
+
+      let data = new FormData;
+      data.append('pass_form', '');
+      data.append('new_pass', new_pass);
+      data.append('confirm_pass', confirm__pass);
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "ajax/profile.php", true);
+      xhr.onload = function () {
+
+        let res = this.responseText;
+        if (res == 'pass_mismatch') {
+          alert('error', 'Password Is not Match with confirm password');
+        } else if (this.responseText == 0) {
+          alert('error', 'No Changes');
+        }
+        else {
+          alert('success','Changes Saved');
+          pass_form.reset();     
+
+        }
+      }
+      xhr.send(data);
+
+    })
 
 
 
