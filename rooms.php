@@ -19,7 +19,27 @@
 
 <body class="bg-light">
   <!-- Header Design -->
-  <?php require('include/header.php'); ?>
+  <?php
+  require('include/header.php');
+
+  $checkin_default = "";
+  $checkout_default = "";
+  $adult_default = "";
+  $children_default = "";
+
+
+
+  if (isset($_GET['check_availability'])) {
+    $frm_data = filteration($_GET);
+
+    $checkin_default = $frm_data['checkin'];
+    $checkout_default = $frm_data['checkout'];
+    $adult_default = $frm_data['adult'];
+    $children_default = $frm_data['children'];
+
+  }
+
+  ?>
   <!-- End of Header Design -->
 
   <div class="my-5 px-4">
@@ -47,9 +67,9 @@
                     class="btn shadow-none btn-sm text-secondary d-none">Reset</button>
                 </h5>
                 <label class="form-label">Check-In</label>
-                <input type="date" class="form-control shadow-none mb-3" id="checkin" onchange="chk_avail_filter()">
+                <input type="date" value="<?php echo $checkin_default; ?>" class="form-control shadow-none mb-3" id="checkin" onchange="chk_avail_filter()">
                 <label class="form-label">Check-Out</label>
-                <input type="date" class="form-control shadow-none" id="checkout" onchange="chk_avail_filter()">
+                <input type="date" value="<?php echo $checkout_default; ?>" class="form-control shadow-none" id="checkout" onchange="chk_avail_filter()">
               </div>
 
 
@@ -89,11 +109,11 @@
                 <div class="d-flex">
                   <div class="me-2">
                     <label class="form-label">Adults</label>
-                    <input type="number" min="1" id="adults" oninput="guests_filter()" class="form-control shadow-none">
+                    <input type="number" value="<?php echo $adult_default; ?>" min="1" id="adults" oninput="guests_filter()" class="form-control shadow-none">
                   </div>
                   <div>
                     <label class="form-label">Childern</label>
-                    <input type="number" max="1" id="children" oninput="guests_filter()"
+                    <input type="number" value="<?php echo $children_default; ?>" max="1" id="children" oninput="guests_filter()"
                       class="form-control shadow-none">
                   </div>
                 </div>
@@ -213,7 +233,7 @@
     function facilities_clear() {
       let get_facilities = document.querySelectorAll("[name='facilities']:checked");
       get_facilities.forEach((facility) => {
-        facility.checked=false;
+        facility.checked = false;
 
       });
       facilities_btn.classList.add('d-none');
@@ -221,7 +241,10 @@
     }
 
 
-    fetch_rooms();
+    window.onload = function()
+    {
+      fetch_rooms();
+    }
 
   </script>
 
