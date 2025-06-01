@@ -125,15 +125,41 @@
           $room_thumb = ROOM_IMG_PATH . $thumb_row['image'];
         }
 
-        $book_btn= "";
-        if(!$setting_res['shutdown']){
-          $login=0;
-          if (isset($_SESSION['login']) && $_SESSION['login'] == true) 
-          {
-            $login=1;
+        $book_btn = "";
+        if (!$setting_res['shutdown']) {
+          $login = 0;
+          if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+            $login = 1;
           }
           $book_btn = "<button onclick='checkLoginToBook($login,$room_data[id])' class='btn btn-sm  text-white custom-bg shadow-none'>Book Now</button>";
         }
+
+        $rating_q= "SELECT AVG(rating) AS `avg_rating` FROM  `rate_review`
+        WHERE `room_id`=$room_data[id] ORDER BY `sr_no` DESC LIMIT 20";
+
+        $rating_res = mysqli_query($con,$rating_q);
+        $rating_fetch = mysqli_fetch_assoc($rating_res);
+
+        $rating_data = "";
+
+        if($rating_fetch['avg_rating']!=NULL)
+        {
+          $rating_data = "<div class='rating mb-4'>
+                  <h6 class='mb-1'>Rating</h6>
+                  <span class='badge rounded-pill bg-light'>
+                  ";
+          for($i=0;$i<$rating_fetch['avg_rating'];$i++){
+            $rating_data .= "<i class='bi bi-star-fill text-warning'></i>";
+          }
+
+          $rating_data .= "</span>
+
+                </div>";
+
+        }
+
+
+
 
         // Print room card
         echo <<<data
@@ -159,16 +185,7 @@
                   <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">$room_data[adult] Adult</span>
                   <span class="badge rounded-pill bg-light text-dark text-wrap lh-base">$room_data[children] Children</span>
                 </div>
-                <div class="rating mb-4">
-                  <h6 class="mb-1">Rating</h6>
-                  <span class="badge rounded-pill bg-light">
-                    <i class="bi bi-star-fill text-warning"></i>
-                    <i class="bi bi-star-fill text-warning"></i>
-                    <i class="bi bi-star-fill text-warning"></i>
-                    <i class="bi bi-star-fill text-warning"></i>
-                  </span>
-
-                </div>
+                $rating_data
 
                 <div class="d-flex justify-content-evenly mb-2">
                   $book_btn
@@ -235,134 +252,57 @@
     <div class="swiper swiper-testimonials">
       <div class="swiper-wrapper mb-5">
 
-        <div class="swiper-slide bg-white p-4">
-          <div class="profile d-flex align-items-center mb-3">
-            <img src="images/facilities/IMG_47816.svg" width="30px">
-            <h6 class="m-0 ms-2 ">Random user1</h6>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Animi, autem qui voluptas nemo inventore sapiente.
-            Ipsum blanditiis laudantium reiciendis quibusdam!
-          </p>
-          <div class="rating">
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-          </div>
+        <?php
+        $review_q = "SELECT rr.*,uc.name AS uname, uc.profile, r.name AS rname FROM `rate_review` rr 
+              INNER JOIN `users_cred` uc ON rr.user_id=uc.id
+              INNER JOIN `rooms` r ON rr.room_id=r.id
+              order by `sr_no` DESC LIMIT 10";
+        $data = mysqli_query($con, $review_q);
+        $img_path = USERS_IMG_PATH;
 
-        </div>
-        <div class="swiper-slide bg-white p-4">
-          <div class="profile d-flex align-items-center mb-3">
-            <img src="images/facilities/IMG_47816.svg" width="30px">
-            <h6 class="m-0 ms-2 ">Random user1</h6>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Animi, autem qui voluptas nemo inventore sapiente.
-            Ipsum blanditiis laudantium reiciendis quibusdam!
-          </p>
-          <div class="rating">
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-          </div>
+        if(mysqli_num_rows($data)==0){
+          echo 'No reviews yet';
+        }
+        else
+        {
+          // $i = 1;
+          while ($row = mysqli_fetch_assoc($data)) 
+          {
+            $stars = "<i class='bi bi-star-fill text-warning'></i> ";
+            for($i=1;$i<$row['rating'];$i++){
+              $stars .= " <i class='bi bi-star-fill text-warning'></i>";
+            }
 
-        </div>
-        <div class="swiper-slide bg-white p-4">
-          <div class="profile d-flex align-items-center mb-3">
-            <img src="images/facilities/IMG_47816.svg" width="30px">
-            <h6 class="m-0 ms-2 ">Random user1</h6>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Animi, autem qui voluptas nemo inventore sapiente.
-            Ipsum blanditiis laudantium reiciendis quibusdam!
-          </p>
-          <div class="rating">
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-          </div>
+            echo<<<slides
+            <div class="swiper-slide bg-white p-4">
+              <div class="profile d-flex align-items-center mb-3">
+                <img src="$img_path$row[profile]" loading='lazy' width="30px">
+                <h6 class="m-0 ms-2 ">$row[uname]</h6>
+              </div>
+              <p>
+                $row[review]
+                
+              </p>
+              <div class="rating">
+                $stars
+              </div>
 
-        </div>
-        <div class="swiper-slide bg-white p-4">
-          <div class="profile d-flex align-items-center mb-3">
-            <img src="images/facilities/IMG_47816.svg" width="30px">
-            <h6 class="m-0 ms-2 ">Random user1</h6>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Animi, autem qui voluptas nemo inventore sapiente.
-            Ipsum blanditiis laudantium reiciendis quibusdam!
-          </p>
-          <div class="rating">
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-          </div>
+            </div>
 
-        </div>
-        <div class="swiper-slide bg-white p-4">
-          <div class="profile d-flex align-items-center mb-3">
-            <img src="images/facilities/IMG_47816.svg" width="30px">
-            <h6 class="m-0 ms-2 ">Random user1</h6>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Animi, autem qui voluptas nemo inventore sapiente.
-            Ipsum blanditiis laudantium reiciendis quibusdam!
-          </p>
-          <div class="rating">
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-          </div>
 
-        </div>
 
-        <div class="swiper-slide bg-white p-4">
-          <div class="profile d-flex align-items-center mb-3">
-            <img src="images/facilities/IMG_47816.svg" width="30px">
-            <h6 class="m-0 ms-2 ">Random user1</h6>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Animi, autem qui voluptas nemo inventore sapiente.
-            Ipsum blanditiis laudantium reiciendis quibusdam!
-          </p>
-          <div class="rating">
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-          </div>
+            slides;
 
-        </div>
+          }
 
-        <div class="swiper-slide bg-white p-4">
-          <div class="profile d-flex align-items-center mb-3">
-            <img src="images/facilities/IMG_47816.svg" width="30px">
-            <h6 class="m-0 ms-2 ">Random user1</h6>
-          </div>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Animi, autem qui voluptas nemo inventore sapiente.
-            Ipsum blanditiis laudantium reiciendis quibusdam!
-          </p>
-          <div class="rating">
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-            <i class="bi bi-star-fill text-warning"></i>
-          </div>
+        }
 
-        </div>
+
+        ?>
+
+
+        
+        
       </div>
       <div class="swiper-pagination"></div>
     </div>
