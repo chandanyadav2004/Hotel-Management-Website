@@ -95,13 +95,13 @@ if(isset(($_GET['del']))){
 
                         <div class="table-responsive-md" >
                             <table class="table table-hover border">
-                                <thead class="sticky-top ">
+                                <thead class="">
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#.</th>
                                         <th scope="col">Room Name</th>
                                         <th scope="col">User Name</th>
                                         <th scope="col" >Rating</th>
-                                        <th scope="col" >Review</th>
+                                        <th scope="col" width="40%">Review</th>
                                         <th scope="col">Date</th>
                                         <th scope="col">Action</th>
                                     </tr>
