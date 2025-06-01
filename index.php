@@ -149,7 +149,7 @@
                   <span class='badge rounded-pill bg-light'>
                   ";
           for($i=0;$i<$rating_fetch['avg_rating'];$i++){
-            $rating_data .= "<i class='bi bi-star-fill text-warning'></i>";
+            $rating_data .= " <i class='bi bi-star-fill text-warning'></i>";
           }
 
           $rating_data .= "</span>
@@ -269,7 +269,7 @@
           while ($row = mysqli_fetch_assoc($data)) 
           {
             $stars = "<i class='bi bi-star-fill text-warning'></i> ";
-            for($i=1;$i<$row['rating'];$i++){
+            for($i=1;$i<=$row['rating'];$i++){
               $stars .= " <i class='bi bi-star-fill text-warning'></i>";
             }
 
