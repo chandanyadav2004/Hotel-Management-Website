@@ -101,7 +101,7 @@ if(isset(($_GET['del']))){
                             <table class="table table-hover border">
                                 <thead class="sticky-top ">
                                     <tr class="bg-dark text-light">
-                                        <th scope="col">SrNo.</th>
+                                        <th scope="col">#.</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
                                         <th scope="col" width="20%">Subjects</th>
@@ -118,7 +118,7 @@ if(isset(($_GET['del']))){
                                     while ($row = mysqli_fetch_assoc($data)) {
                                        $seen='';
                                         if($row['seen']!=1){
-                                            $seen = "<a href='?seen=$row[sr_no]' class='btn btn-sm  rounded-pill btn-primary'>Mark as read</a>";
+                                            $seen = "<a href='?seen=$row[sr_no]' class='btn btn-sm  rounded-pill btn-primary'>Mark as read</a><br>";
                                         }
                                         $seen .= "<a href='?del=$row[sr_no]' class='btn btn-sm  rounded-pill btn-danger mt-2'>Delete</a>";
 
