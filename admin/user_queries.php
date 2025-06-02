@@ -129,7 +129,7 @@ if(isset(($_GET['del']))){
                                                 <td>$row[email]</td>
                                                 <td>$row[subject]</td>
                                                 <td>$row[message]</td>
-                                                <td>$row[date]</td>
+                                                <td>$row[datetime]</td>
 
                                                 <td>$seen</td>
                                             </tr>
