@@ -89,13 +89,21 @@ adminLogin();
                     </div>
 
                     <div class="col-md-3 mb-4">
-                        <div class="card text-center text-primary p-3">
-                            <h6>Totals Bookings</h6>
+                        <div class="card text-center text-success p-3">
+                            <h6>Active Bookings</h6>
                             <h1 class="mt-2 mb-0">0</h1>
                             <h4 class="mt-mb-0">₹0</h4>
                         </div>    
                     </div>
-                    
+
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center text-danger p-3">
+                            <h6>Cancel Bookings</h6>
+                            <h1 class="mt-2 mb-0">0</h1>
+                            <h4 class="mt-mb-0">₹0</h4>
+                        </div>    
+                    </div>
+
 
                     
                 </div>
