@@ -69,8 +69,38 @@ adminLogin();
                     </div>
                 </div>
 
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5>Booking Analytics </h5>
+                    <select name="" id="" class="form-select shadow-none bg-light w-auto">
+                        <option value="1">Past 30 Days</option>
+                        <option value="2">Past 90 Days</option>
+                        <option value="3">Past 1 Years</option>
+                        <option value="4">All time</option>
+                    </select>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center text-primary p-3">
+                            <h6>Totals Bookings</h6>
+                            <h1 class="mt-2 mb-0">0</h1>
+                            <h4 class="mt-mb-0">₹0</h4>
+                        </div>    
+                    </div>
+
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center text-primary p-3">
+                            <h6>Totals Bookings</h6>
+                            <h1 class="mt-2 mb-0">0</h1>
+                            <h4 class="mt-mb-0">₹0</h4>
+                        </div>    
+                    </div>
+                    
+
+                    
+                </div>
+
             </div>
-            
         </div>
     </div>
 
