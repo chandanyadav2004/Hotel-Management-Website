@@ -43,6 +43,15 @@ adminLogin();
                         </a>
 
                     </div>
+                    <div class="col-md-3 mb-4">
+                        <a href="refund_booking.php" class="text-decoration-none">
+                            <div class="card text-center text-success p-3">
+                                <h6>Refund Bookings</h6>
+                                <h1 class="mt-2 mb-0">5</h1>
+                            </div>
+                        </a>
+
+                    </div>
                 </div>
 
             </div>
