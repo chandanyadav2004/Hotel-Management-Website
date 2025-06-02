@@ -59,6 +59,14 @@ adminLogin();
                             </div>
                         </a>
                     </div>
+                    <div class="col-md-3 mb-4">
+                        <a href="rate_review.php" class="text-decoration-none">
+                            <div class="card text-center text-info p-3">
+                                <h6>Rating & Reviews</h6>
+                                <h1 class="mt-2 mb-0">5</h1>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
             </div>
