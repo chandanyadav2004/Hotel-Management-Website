@@ -100,7 +100,7 @@ if (isset($_POST['transationVerify'])) {
                 `trans_status` = ?
               WHERE `order_id` = ?";
 
-    $res = insert($query, [$booking_status, $trans_id, $trans_amt, $trans_status, $order_id], 'sssss');
+    $res = update($query, [$booking_status, $trans_id, $trans_amt, $trans_status, $order_id], 'sssss');
 
     if ($res) {
         unset($_SESSION['room']);
