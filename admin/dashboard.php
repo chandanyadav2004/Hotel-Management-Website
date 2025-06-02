@@ -107,8 +107,8 @@ adminLogin();
                 </div>
 
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5>Booking Analytics </h5>
-                    <select name="" id="" class="form-select shadow-none bg-light w-auto">
+                    <h5>Booking Analytics</h5>
+                    <select name="" id="" class="form-select shadow-none bg-light w-auto" onchange="booking_analytics(this.value)">
                         <option value="1">Past 30 Days</option>
                         <option value="2">Past 90 Days</option>
                         <option value="3">Past 1 Years</option>
@@ -120,31 +120,31 @@ adminLogin();
                     <div class="col-md-3 mb-4">
                         <div class="card text-center text-primary p-3">
                             <h6>Totals Bookings</h6>
-                            <h1 class="mt-2 mb-0">0</h1>
-                            <h4 class="mt-mb-0">₹0</h4>
+                            <h1 class="mt-2 mb-0" id="total_booking"></h1>
+                            <h4 class="mt-mb-0" id="total_amt">₹0</h4>
                         </div>    
                     </div>
 
                     <div class="col-md-3 mb-4">
                         <div class="card text-center text-success p-3">
                             <h6>Active Bookings</h6>
-                            <h1 class="mt-2 mb-0">0</h1>
-                            <h4 class="mt-mb-0">₹0</h4>
+                            <h1 class="mt-2 mb-0" id="active_bookings">0</h1>
+                            <h4 class="mt-mb-0" id="active_amt">₹0</h4>
                         </div>    
                     </div>
 
                     <div class="col-md-3 mb-4">
                         <div class="card text-center text-danger p-3">
                             <h6>Cancel Bookings</h6>
-                            <h1 class="mt-2 mb-0">0</h1>
-                            <h4 class="mt-mb-0">₹0</h4>
+                            <h1 class="mt-2 mb-0" id="cancelled_bookings">0</h1>
+                            <h4 class="mt-mb-0" id="cancelled_amt">₹0</h4>
                         </div>    
                     </div>
                 </div>
 
                 <div class="d-flex align-items-center justify-content-between mb-3">
                     <h5>Users, Queries , Reviews Analytics </h5>
-                    <select name="" id="" class="form-select shadow-none bg-light w-auto">
+                    <select name="" id="" class="form-select shadow-none bg-light w-auto" onchange="user_analytics(this.value)">
                         <option value="1">Past 30 Days</option>
                         <option value="2">Past 90 Days</option>
                         <option value="3">Past 1 Years</option>
@@ -156,21 +156,21 @@ adminLogin();
                     <div class="col-md-3 mb-4">
                         <div class="card text-center text-success p-3">
                             <h6>New Registration </h6>
-                            <h1 class="mt-2 mb-0">0</h1>
+                            <h1 class="mt-2 mb-0" id="total_new_reg">0</h1>
                         </div>    
                     </div>
 
                     <div class="col-md-3 mb-4">
                         <div class="card text-center text-primary p-3">
                             <h6>Queries</h6>
-                            <h1 class="mt-2 mb-0">0</h1>
+                            <h1 class="mt-2 mb-0" id="total_queries">0</h1>
                         </div>    
                     </div>
 
                     <div class="col-md-3 mb-4">
                         <div class="card text-center text-primary p-3">
                             <h6>Reviews </h6>
-                            <h1 class="mt-2 mb-0">0</h1>
+                            <h1 class="mt-2 mb-0" id="total_reviews">0</h1>
                         </div>    
                     </div>
                 </div>
@@ -210,10 +210,12 @@ adminLogin();
             </div>
         </div>
     </div>
+    
 
-
-
+    
+    
     <?php require('inc/scripts.php') ?>
+    <script src="scripts/dashboard.js"></script>
 </body>
 
 </html>
