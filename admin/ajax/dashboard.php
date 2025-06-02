@@ -4,136 +4,73 @@ require('../inc/db_config.php');
 adminLogin();
 
 
-if (isset($_POST['get_booking'])) {
+if (isset($_POST['booking_analytics'])) {
 
     $frm_data = filteration($_POST);
 
-    $limit = 3;
-    $page = $frm_data['page'];
-    $start = ($page - 1) * $limit;
-    // echo $frm_data['search'];
+    $condition="";
 
-    $query = "SELECT bo.*, bd.* 
-            FROM `booking_order` bo  
-            INNER JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
-            WHERE (
-                (bo.booking_status = 'booked' AND bo.arrival = 1)
-                OR (bo.booking_status = 'cancelled' AND bo.refund = 1)
-                OR (bo.booking_status = 'pending')
-            )
-            AND (
-                bo.order_id LIKE ?
-                OR bd.phonenum LIKE ?
-                OR bd.user_name LIKE ?
-            )
-            ORDER BY bo.booking_id DESC";
+    if($frm_data['period']==1)
+    {
+        $condition="WHERE datetime BETWEEN (NOW() - INTERVAL 30  DAY) AND NOW()";
+    }else if($frm_data['period']==2)
+    {
+        $condition="WHERE datetime BETWEEN (NOW() - INTERVAL 90 DAY) AND NOW()";
+    }else if($frm_data['period']==1)
+    {
+        $condition="WHERE datetime BETWEEN (NOW() - INTERVAL 1 YEAR) AND NOW()";
+    }
+    
 
-    $res = select($query, ["%$frm_data[search]%", "%$frm_data[search]%", "%$frm_data[search]%"], 'sss');
-
-    $limit_query = $query . " LIMIT $start,$limit";
-    $limit_res = select($limit_query, ["%$frm_data[search]%", "%$frm_data[search]%", "%$frm_data[search]%"], 'sss');
+    $result = mysqli_fetch_assoc(mysqli_query($con,"SELECT 
+        COUNT(CASE WHEN booking_status!='pending' THEN 1 END) AS `total_booking` ,
+        SUM(CASE WHEN booking_status!='pending' THEN `trans_amt` END) AS `total_amt` ,
 
 
-    $i = $start + 1;
+        COUNT(CASE WHEN booking_status='booked' AND arrival=1 THEN 1 END) AS `active_bookings` ,
+        SUM(CASE WHEN booking_status='booked' AND arrival=1 THEN `trans_amt` END) AS `active_amt` ,
 
-    $total_rows = mysqli_num_rows($res);
+        COUNT(CASE WHEN booking_status='cancelled' AND refund=0 THEN 1 END) AS `cancelled_bookings` ,
+        SUM(CASE WHEN booking_status='cancelled' AND refund=0 THEN `trans_amt` END) AS `cancelled_amt` 
+        FROM `booking_order` $condition"));
+
+    $output = json_encode($result);
+
+    echo $output;
+
+}
 
 
-    if ($total_rows == 0) {
-        $output = json_encode(['table_data' => "<b>No Data Found</b>", "pagination" => '']);
-        echo $output;
-        exit;
+if (isset($_POST['user_analytics'])) {
+
+    $frm_data = filteration($_POST);
+
+    $condition="";
+
+    if($frm_data['period']==1)
+    {
+        $condition="WHERE datetime BETWEEN (NOW() - INTERVAL 30  DAY) AND NOW()";
+    }else if($frm_data['period']==2)
+    {
+        $condition="WHERE datetime BETWEEN (NOW() - INTERVAL 90 DAY) AND NOW()";
+    }else if($frm_data['period']==1)
+    {
+        $condition="WHERE datetime BETWEEN (NOW() - INTERVAL 1 YEAR) AND NOW()";
     }
 
+    $total_queries = mysqli_fetch_assoc(mysqli_query($con,"SELECT COUNT(sr_no) AS `count` 
+        FROM `user_queries` $condition"));
+    
+    $total_reviews = mysqli_fetch_assoc(mysqli_query($con,"SELECT COUNT(sr_no) AS `count` 
+        FROM `rate_review` $condition"));
 
-    $table_data = "";
+     $total_new_reg = mysqli_fetch_assoc(mysqli_query($con,"SELECT COUNT(id) AS `count` 
+        FROM `users_cred` $condition"));
 
-    while ($data = mysqli_fetch_assoc($limit_res)) {
-        $date = date("d-m-Y", strtotime($data['datetime']));
-        $checkin_date = date("d-m-Y", strtotime($data['check_in']));
-        $checkout_date = date("d-m-Y", strtotime($data['check_out']));
+    $output = ['total_queries'=>$total_queries['count'],'total_reviews'=>$total_reviews['count'],'total_new_reg'=>$total_new_reg['count']];
 
-        if ($data['booking_status'] == 'Booked') {
-            $status_bg = 'bg-success';
-        } else if ($data['booking_status'] == 'cancelled') {
-            $status_bg = 'bg-danger';
-        } else {
-            $status_bg = 'bg-warning text-dark';
-        }
+    $output = json_encode($output);
 
-        $table_data .= "
-        <tr>
-            <td>$i</td>
-            <td>
-                <span class='badge bg-primary'>
-                    Order ID: $data[order_id]
-                </span>
-                <br>
-                <b>Name : </b>$data[user_name]
-                <br>
-                <b>Phone No. : </b>$data[phonenum]
-            </td>
-            <td>
-                <b>Room:</b> $data[room_name]
-                <br>
-                <b>Price :₹</b> $data[price]
-            </td>
-            <td>
-                <b>Amount: ₹</b> $data[trans_amt]
-                <br>
-                <b>Date :</b> $date
-            </td>
-            <td>
-                <span class='badge $status_bg '>$data[booking_status]</span>
-            </td>
-            <td>
-            
-                <button type='button' onclick='download($data[booking_id])' class='btn btn-outline-success btn-sm fw-bold  shadow-none '>
-                  <i class='bi bi-file-earmark-arrow-down-fill'></i>
-                </button>
-                
-            </td>
-        
-        </tr>
-        
-        ";
-        $i++;
-    }
-
-    $pagination = "";
-    if ($total_rows > $limit) {
-        // $pagination=$total_rows;
-        $total_pages = ceil($total_rows / $limit);
-        // echo $total_pages;
-
-        if ($page != 1) {
-            $pagination .= "<li class='page-item '>
-            <button onclick='change_page(1)' class='page-link shadow-none'>First</button>
-            </li>";
-        }
-
-
-        $disabled = ($page == 1) ? "disabled" : "";
-        $prev = $page - 1;
-        $pagination .= "<li class='page-item $disabled'><button onclick='change_page($prev)' class='page-link shadow-none'>Previous</button></li>";
-
-
-        $next = $page + 1;
-
-        $disabled = ($page == $total_pages) ? "disabled" : "";
-
-        $pagination .= "<li class='page-item $disabled'><button onclick='change_page($next)' class='page-link shadow-none'>Next</button></li>";
-
-        if ($page != $total_pages) {
-            $pagination .= "<li class='page-item '>
-            <button onclick='change_page($total_pages)' class='page-link shadow-none'>Last</button>
-            </li>";
-        }
-        
-
-    }
-
-    $output = json_encode(['table_data' => $table_data, "pagination" => $pagination]);
     echo $output;
 
 
